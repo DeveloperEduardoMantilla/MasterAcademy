@@ -1,0 +1,268 @@
+use("MasterAcademy");
+
+db.role.insertMany([
+    {
+        "id": 1,
+        "name": "Administrator"
+    },
+    {
+        "id": 2,
+        "name": "Student"
+    }
+])
+
+db.user.insertMany([
+    {
+        "id": 1,
+        "username": "john_doe",
+        "fullName": "John Doe",
+        "loginCount": "5",
+        "lastLogin": "2023-09-10",
+        "email": "john@example.com",
+        "authentication": "password",
+        "creationDate": "2023-01-15",
+        "roleId": 2
+    }
+    ,
+    {
+        "id": 2,
+        "username": "jane_smith",
+        "fullName": "Jane Smith",
+        "loginCount": "10",
+        "lastLogin": "2023-09-11",
+        "email": "jane@example.com",
+        "authentication": "password",
+        "creationDate": "2022-11-20",
+        "roleId": 2
+    }
+    ,
+    {
+        "id": 3,
+        "username": "bob_jones",
+        "fullName": "Bob Jones",
+        "loginCount": "3",
+        "lastLogin": "2023-09-09",
+        "email": "bob@example.com",
+        "authentication": "password",
+        "creationDate": "2023-03-05",
+        "roleId": 2
+    }
+    ,
+    {
+        "id": 4,
+        "username": "alice_wilson",
+        "fullName": "Alice Wilson",
+        "loginCount": "7",
+        "lastLogin": "2023-09-12",
+        "email": "alice@example.com",
+        "authentication": "password",
+        "creationDate": "2022-09-25",
+        "roleId": 2
+    }
+    ,
+    {
+        "id": 5,
+        "username": "sam_brown",
+        "fullName": "Sam Brown",
+        "loginCount": "2",
+        "lastLogin": "2023-09-08",
+        "email": "sam@example.com",
+        "authentication": "password",
+        "creationDate": "2023-05-30",
+        "roleId": 2
+    }
+    
+])
+
+db.course.insertMany([
+    {
+        "id": 1,
+        "name": "React Fundamentals",
+        "description": "Introduction to React basics.",
+        "status": "Active",
+        "categoryId": 1,
+        "date": "2023-09-01",
+        "administratorId": 1
+    }
+    ,
+    {
+        "id": 2,
+        "name": "React State Management",
+        "description": "Learn about state management in React.",
+        "status": "Active",
+        "categoryId": 1,
+        "date": "2023-08-25",
+        "administratorId": 1
+    }
+])
+
+db.lesson.insertMany([
+    {
+        "id": 1,
+        "lesson": "Introduction to JSX",
+        "courseId": 1
+    }
+    ,
+    {
+        "id": 2,
+        "lesson": "Working with React Components",
+        "courseId": 1
+    }
+    ,
+    {
+        "id": 3,
+        "lesson": "React Hooks",
+        "courseId": 2
+    }
+    ,
+    {
+        "id": 4,
+        "lesson": "State and Props in React",
+        "courseId": 2
+    }
+    ,
+    {
+        "id": 5,
+        "lesson": "Redux Fundamentals",
+        "courseId": 2
+    }
+    
+])
+
+db.category.insertMany([
+    {
+        "id": 1,
+        "name": "Programming"
+    },
+    {
+        "id": 2,
+        "name": "Web Development"
+    },
+    {
+        "id": 3,
+        "name": "Data Science"
+    },
+    {
+        "id": 4,
+        "name": "Design"
+    }
+])
+
+db.class.insertMany([
+    {
+        "id": 1,
+        "name": "Introduction to HTML",
+        "description": "Learn the basics of HTML.",
+        "videoUrl": "https://example.com/html-intro",
+        "duration": "30 minutes",
+        "lessonId": 1
+    },
+    {
+        "id": 2,
+        "name": "CSS Styling",
+        "description": "Explore CSS styling techniques.",
+        "videoUrl": "https://example.com/css-styling",
+        "duration": "45 minutes",
+        "lessonId": 1
+    },
+    {
+        "id": 3,
+        "name": "JavaScript Fundamentals",
+        "description": "Get started with JavaScript.",
+        "videoUrl": "https://example.com/js-fundamentals",
+        "duration": "60 minutes",
+        "lessonId": 2
+    },
+    {
+        "id": 4,
+        "name": "React Basics",
+        "description": "Introduction to React framework.",
+        "videoUrl": "https://example.com/react-basics",
+        "duration": "45 minutes",
+        "lessonId": 2
+    },
+    {
+        "id": 5,
+        "name": "Data Analysis with Python",
+        "description": "Learn data analysis using Python.",
+        "videoUrl": "https://example.com/data-analysis-python",
+        "duration": "75 minutes",
+        "lessonId": 3
+    }
+])
+
+db.classRating.insertMany([
+    {
+        "id": 1,
+        "videoId": 1,
+        "studentId": 2,
+        "comment": "Great video!",
+        "date": "2023-09-15",
+        "rating": "5"
+    },
+    {
+        "id": 2,
+        "videoId": 2,
+        "studentId": 3,
+        "comment": "Very informative.",
+        "date": "2023-09-14",
+        "rating": "4"
+    },
+    {
+        "id": 3,
+        "videoId": 3,
+        "studentId": 1,
+        "comment": "Excellent explanation.",
+        "date": "2023-09-13",
+        "rating": "5"
+    },
+    {
+        "id": 4,
+        "videoId": 4,
+        "studentId": 4,
+        "comment": "I enjoyed this video.",
+        "date": "2023-09-12",
+        "rating": "4"
+    },
+    {
+        "id": 5,
+        "videoId": 5,
+        "studentId": 5,
+        "comment": "Good content.",
+        "date": "2023-09-11",
+        "rating": "4"
+    }
+])
+
+db.courseRegistration.insertMany([
+    {
+        "id": 1,
+        "studentId": 1,
+        "courseId": 1,
+        "date": "2023-09-13"
+    },
+    {
+        "id": 2,
+        "studentId": 2,
+        "courseId": 3,
+        "date": "2023-09-14"
+    },
+    {
+        "id": 3,
+        "studentId": 3,
+        "courseId": 2,
+        "date": "2023-09-12"
+    },
+    {
+        "id": 4,
+        "studentId": 4,
+        "courseId": 4,
+        "date": "2023-09-15"
+    },
+    {
+        "id": 5,
+        "studentId": 5,
+        "courseId": 1,
+        "date": "2023-09-10"
+    }
+])
