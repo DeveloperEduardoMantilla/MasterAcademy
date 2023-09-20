@@ -6,7 +6,7 @@ db.createCollection('role', {
             required: ["id", "name"],
             properties: {
                 id: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The id must be of integer type"
                 },
                 name: {
@@ -25,8 +25,8 @@ db.createCollection('user', {
             required: ["id", "username", "fullName", "creationDate", "lastLogin", "roleId"],
             properties: {
                 id: {
-                    bsonType: "int",
-                    description: "The id must be of integer type"
+                    bsonType: "number",
+                    description: "The id must be of number type"
                 },
                 username: {
                     bsonType: "string",
@@ -57,7 +57,7 @@ db.createCollection('user', {
                     description: "The creationDate must be of string type"
                 },
                 roleId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The roleId must be of integer type"
                 }
             }
@@ -72,15 +72,15 @@ db.createCollection('courseRegistration', {
             required: ["id", "studentId", "courseId", "date"],
             properties: {
                 id: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The id must be of integer type"
                 },
                 studentId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The studentId must be of integer type"
                 },
                 courseId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The courseId must be of integer type"
                 },
                 date: {
@@ -99,7 +99,7 @@ db.createCollection('course', {
             required: ["id", "name", "description", "status", "categoryId", "date", "administratorId"],
             properties: {
                 id: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The id must be of integer type"
                 },
                 name: {
@@ -115,7 +115,7 @@ db.createCollection('course', {
                     description: "The status must be of string type"
                 },
                 categoryId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The categoryId must be of integer type"
                 },
                 date: {
@@ -123,7 +123,7 @@ db.createCollection('course', {
                     description: "The date must be of string type"
                 },
                 administratorId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The administratorId must be of integer type"
                 }
             }
@@ -138,7 +138,7 @@ db.createCollection('lesson', {
             required: ["id", "lesson", "courseId"],
             properties: {
                 id: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The id must be of integer type"
                 },
                 lesson: {
@@ -146,7 +146,7 @@ db.createCollection('lesson', {
                     description: "The lesson must be of string type"
                 },
                 courseId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The courseId must be of integer type"
                 }
             }
@@ -161,7 +161,7 @@ db.createCollection('category', {
             required: ["id", "name"],
             properties: {
                 id: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The id must be of integer type"
                 },
                 name: {
@@ -180,7 +180,7 @@ db.createCollection('class', {
             required: ["id", "name", "videoUrl", "lessonId"],
             properties: {
                 id: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The id must be of integer type"
                 },
                 name: {
@@ -200,7 +200,7 @@ db.createCollection('class', {
                     description: "The duration must be of string type"
                 },
                 lessonId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The lessonId must be of integer type"
                 }
             }
@@ -215,15 +215,15 @@ db.createCollection('classRating', {
             required: ["id", "videoId", "studentId", "comment", "date"],
             properties: {
                 id: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The id must be of integer type"
                 },
                 videoId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The videoId must be of integer type"
                 },
                 studentId: {
-                    bsonType: "int",
+                    bsonType: "number",
                     description: "The studentId must be of integer type"
                 },
                 comment: {
