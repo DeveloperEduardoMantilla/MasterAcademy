@@ -1,15 +1,24 @@
 import express from "express";
 import dotenv from "dotenv";
-import {conx} from "./config/atlas.js";
 import passport from "passport";
+import auth from "./router/auth.js"
+import session  from "express-session";
+
 
 dotenv.config("../../");
 let appExpress = express();
 appExpress.use(express.json());
+
+appExpress.use(session({
+    secret:"HolaMundo",
+    saveUninitialized:false,
+    resave:false 
+}))
 appExpress.use(passport.initialize());
 appExpress.use(passport.session());
 
-appExpress.get("/login", passport.authenticate('discord'))
+appExpress.use("/auth", auth)
+
 
 let config = JSON.parse(process.env.MY_SERVER)
 appExpress.listen(config, ()=>{
