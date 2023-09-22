@@ -11,7 +11,7 @@ passport.deserializeUser(async(user, done)=>{
     done(null, user)
 })
 
-function buscarNombreEnArray(arr, nombreBuscado) {
+function searchNameInArray(arr, nombreBuscado) {
     const resultado = arr.find(objeto => objeto.name === nombreBuscado);
     return !!resultado;
 }
@@ -19,28 +19,28 @@ function buscarNombreEnArray(arr, nombreBuscado) {
 passport.use(new Strategy({ 
     clientID: process.env.DISCORD_CLIENT_ID,
     clientSecret: process.env.DISCORD_CLIENT_SECRET,
-    callbackURL : "/auth/redirect",
+    callbackURL : "/dasboard",
     scope: ['identify','guilds']
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
             let guildName=process.env.NAME_SERVER_DISCORD;
             
-            if(!buscarNombreEnArray(profile.guilds, guildName)){
-                console.log(`El usuario no pertenece al servidor ${guildName}`);
-                return fasle;
+            if(!searchNameInArray(profile.guilds, guildName)){
+                console.log(`The user does not belong to the server ${guildName}`);
+                return false;
             }
 
             let db= await conx();
             let user =db.collection("user");
             let date = new Date;
-            let fecha=date.getFullYear()+"/"+date.getMonth()+"/"+date.getDay()
+            let fecha = date.toLocaleString();
             let newUser = {
                 id:parseInt(profile.id),
                 username: profile.username,
                 fullName: profile.username,
                 loginCount:"1",
-                lastLogin:fecha,
-                creationDate:fecha,
+                lastLogin:fecha.toString(),
+                creationDate:fecha.toString(),
                 roleId:2
             }
             let res = await user.findOne({id:parseInt(profile.id)});
@@ -49,7 +49,6 @@ passport.use(new Strategy({
                 done(null, newUser)
             }else{
                 let cant = parseInt(res.loginCount)+1;
-                let fecha = date.toLocaleString();
                 await user.updateOne({id:parseInt(profile.id)},{$set:{loginCount:cant.toString(), lastLogin:fecha.toString()}})
                 done(null,res)
             }
