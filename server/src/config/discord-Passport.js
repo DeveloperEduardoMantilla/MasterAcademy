@@ -7,7 +7,7 @@ dotenv.config()
 passport.serializeUser((user, done)=>{
     done(null, user)
 })
-passport.deserializeUser(async(user, done)=>{
+passport.deserializeUser((user, done)=>{
     done(null, user)
 })
 
@@ -19,7 +19,7 @@ function searchNameInArray(arr, nombreBuscado) {
 passport.use(new Strategy({ 
     clientID: process.env.DISCORD_CLIENT_ID,
     clientSecret: process.env.DISCORD_CLIENT_SECRET,
-    callbackURL : "/dasboard",
+    callbackURL : "/dasboard/redirect",
     scope: ['identify','guilds']
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
@@ -34,17 +34,18 @@ passport.use(new Strategy({
             let user =db.collection("user");
             let date = new Date;
             let fecha = date.toLocaleString();
-            let newUser = {
-                id:parseInt(profile.id),
-                username: profile.username,
-                fullName: profile.username,
-                loginCount:"1",
-                lastLogin:fecha.toString(),
-                creationDate:fecha.toString(),
-                roleId:2
-            }
             let res = await user.findOne({id:parseInt(profile.id)});
+
             if(res==null || Object.keys(res).length==0){
+                let newUser = {
+                    id:parseInt(profile.id),
+                    username: profile.username,
+                    fullName: profile.username,
+                    loginCount:"1",
+                    lastLogin:fecha.toString(),
+                    creationDate:fecha.toString(),
+                    roleId:2
+                }
                 await user.insertOne(newUser);
                 done(null, newUser)
             }else{
@@ -52,8 +53,6 @@ passport.use(new Strategy({
                 await user.updateOne({id:parseInt(profile.id)},{$set:{loginCount:cant.toString(), lastLogin:fecha.toString()}})
                 done(null,res)
             }
-        
-
     }catch(error){
         console.error(error);
     }

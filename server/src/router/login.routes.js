@@ -1,9 +1,10 @@
 import express from "express";
 import passport from "../config/discord-Passport.js";
+import { appOut } from "../utils/auth.js";
 
-const  appAuth = express();
-appAuth.use(express.json());
+const  appLogin = express();
+appLogin.use(express.json());
 
-appAuth.get("/", passport.authenticate('discord'));
+appLogin.get("/", appOut, passport.authenticate('discord'));
 
-export default appAuth;
+export default appLogin;
