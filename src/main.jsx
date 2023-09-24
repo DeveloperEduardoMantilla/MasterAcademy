@@ -6,10 +6,11 @@ import Login from './pages/Login.jsx';
 import Home from "./pages/Home.jsx";
 import Dasboard from './pages/Dasboard.jsx';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import "../src/assets/styles/main.css"
 
 const root = createBrowserRouter([
   {
-    path:"/home",
+    path:"/",
     element: <Home/>
   },
   {
