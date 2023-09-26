@@ -7,4 +7,8 @@ appLogin.use(express.json());
 
 appLogin.get("/", appOut, passport.authenticate('discord'));
 
+appLogin.get('/redirect', appOut, passport.authenticate('discord', {
+    successRedirect: `http://localhost:5173/dasboard`,
+    failureRedirect: `http://localhost:5173/`,
+}));
 export default appLogin;

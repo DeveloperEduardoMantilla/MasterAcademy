@@ -19,13 +19,12 @@ function searchNameInArray(arr, nombreBuscado) {
 passport.use(new Strategy({ 
     clientID: process.env.DISCORD_CLIENT_ID,
     clientSecret: process.env.DISCORD_CLIENT_SECRET,
-    callbackURL : "/dasboard/redirect",
+    callbackURL : "http://localhost:5010/login/redirect",
     scope: ['identify','guilds']
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
             let guildName=process.env.NAME_SERVER_DISCORD;
             if(!searchNameInArray(profile.guilds, guildName)){    
-                //return done(null,{status:403, message:"unauthorized"});
                 done(null,false)
                 return;
             }

@@ -47,9 +47,12 @@ appExpress.use("/logout", (req,res)=>{
         if(err){
             console.error(err);
             return next(err);
+        }else{
+            res.send({
+                message:"ok"
+            })
         }
     });
-    res.redirect('/home');
 })
 appExpress.use("/dasboard",appDasboard);
 

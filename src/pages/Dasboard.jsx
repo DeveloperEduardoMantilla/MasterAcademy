@@ -1,11 +1,15 @@
 import React from 'react';
+import Header from "../components/header.jsx";
 
 function Dasboard() {
   return (
-    <div className="container">
-      <h1>Página de Dasboard</h1>
-      <p>Este es el contenido de la página de Dasboard.</p>
-    </div>
+    <>
+      <Header/>
+      <div className="container">
+        <h1>Página de Dasboard</h1>
+        <p>Este es el contenido de la página de Dasboard.</p>
+      </div>
+    </>
   );
 }
 
