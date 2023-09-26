@@ -15,7 +15,7 @@ export default function Protected() {
     return (
       <>
         <Outlet />
-        <Navigate to="/courses" />
+        <Navigate to="/dasboard" />
       </>
     );
   }

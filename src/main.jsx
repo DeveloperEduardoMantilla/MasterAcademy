@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import Login from './pages/Login.jsx';
 import Home from "./pages/Home.jsx";
 import Dasboard from './pages/Dasboard.jsx';
+import Protected from './components/middleware/Protected.jsx';
 
 import "../src/assets/styles/main.css"
 
@@ -15,9 +16,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route element={<Protected/>}>
+          
+          <Route path="/dasboard" element={<Dasboard/>} />
+        </Route>
         <Route path="/login" element={<Login/>} />   
-        <Route path="/dasboard" element={<Dasboard/>} />
+        <Route path="/" element={<Home/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
