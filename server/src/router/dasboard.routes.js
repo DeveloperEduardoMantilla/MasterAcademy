@@ -5,16 +5,16 @@ const appDasboard = express();
 appDasboard.use(express.json());
 
 appDasboard.get("/",appAuth, (req,res)=>{
-    res.send(req.user)
+    if(req.user.status>=400){
+        res.send(req.user)
+    }else{
+        res.send(req.user)
+    }
 })
-appDasboard.get("/settings",appAuth, (req,res)=>{
-    res.send({message:req.user})
-})
+
 appDasboard.get('/redirect', appOut, passport.authenticate('discord', {
     successRedirect: '/dasboard',
     failureRedirect: '/home',
 }));
-
-
 
 export default appDasboard;

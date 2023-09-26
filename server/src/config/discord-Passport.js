@@ -24,10 +24,10 @@ passport.use(new Strategy({
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
             let guildName=process.env.NAME_SERVER_DISCORD;
-            
-            if(!searchNameInArray(profile.guilds, guildName)){
-                console.log(`The user does not belong to the server ${guildName}`);
-                return false;
+            if(!searchNameInArray(profile.guilds, guildName)){    
+                //return done(null,{status:403, message:"unauthorized"});
+                done(null,false)
+                return;
             }
 
             let db= await conx();
