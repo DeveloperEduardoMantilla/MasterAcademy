@@ -25,7 +25,7 @@ async function  logueoDiscord(){
   } 
 }
 
-function Login() {
+export default function Login() {
   return (
     <div className="login">
       <div className="content-login">
@@ -45,5 +45,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login

@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/home/header";
 import "../assets/styles/home/home.css"
 
-function Home(){
+export default function Home(){
     return(
         <>
             <Header/>
@@ -12,7 +12,5 @@ function Home(){
                 </div>
             </div>
         </>
-    )
+    );
 }
-
-export default Home;

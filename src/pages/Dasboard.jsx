@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "../components/header.jsx";
 
-function Dasboard() {
+export default function Dasboard() {
   return (
     <>
       <Header/>
@@ -12,5 +12,3 @@ function Dasboard() {
     </>
   );
 }
-
-export default Dasboard
