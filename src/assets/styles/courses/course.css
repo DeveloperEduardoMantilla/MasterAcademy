@@ -1,0 +1,15 @@
+.course{
+    max-width: 30%;
+    background: rgb(85, 83, 87);
+    padding: 20px 10px;
+    margin: 15px 0;
+}
+
+.course h1 {
+    font-size: 16px;
+    color: white;
+}
+.course p {
+    font-size: 12px;
+    color: rgb(201, 201, 201);
+}

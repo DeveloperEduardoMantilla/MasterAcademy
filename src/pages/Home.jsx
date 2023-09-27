@@ -5,7 +5,7 @@ import "../assets/styles/home/home.css"
 export default function Home(){
     return(
         <>
-            <Header/>
+        <Header/>
             <div className="container">
                 <div className="content">
                     <p>Contenido del home de la pagina de MasterAcademy</p>

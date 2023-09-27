@@ -1,14 +1,25 @@
 import React from 'react';
-import Header from "../components/header.jsx";
+import Header from "../components/global/header.jsx";
+import Courses from './Courses.jsx';
+import MyCourses from "../components/dasboard/MyCourses.jsx"
+import Aside from "../components/global/aside.jsx"
+import { Outlet } from 'react-router-dom';
+import "../assets/styles/dasboard/dasboard.css"
 
-export default function Dasboard() {
+
+function Dasboard() {
   return (
     <>
-      <Header/>
-      <div className="container">
-        <h1>Página de Dasboard</h1>
-        <p>Este es el contenido de la página de Dasboard.</p>
-      </div>
+      <main>
+        <Aside/>
+        <section className='body'>
+          <Header/>
+          <MyCourses />
+          <Courses/>
+        </section>
+      </main>
     </>
   );
 }
+
+export default Dasboard

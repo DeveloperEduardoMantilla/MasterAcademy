@@ -1,0 +1,24 @@
+header{
+    width: 100%;
+}
+.navbar{
+    background-color:#15191f;
+}
+.nav-link img{
+    width: 40px;
+}
+
+.dropdown-toggle::after{
+    display: none;
+}
+.dropdown-menu{
+    background-color: #15191f;
+}
+.dropdown-item{
+    color: #fff;
+    cursor: pointer;
+}
+.dropdown-item:focus, .dropdown-item:hover{
+    background-color: #2c5eaa;
+    color: #fff;
+}

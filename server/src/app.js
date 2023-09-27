@@ -29,6 +29,7 @@ appExpress.use(session({
         httpOnly: false
     }
 }))
+
 appExpress.use(passport.initialize());
 appExpress.use(passport.session());
 
@@ -42,18 +43,6 @@ appExpress.get("/",(req,res)=>{
     res.send({message:"ok"})
 })
 appExpress.use("/login", login);
-appExpress.use("/logout", (req,res)=>{
-    req.logout((err)=>{
-        if(err){
-            console.error(err);
-            return next(err);
-        }else{
-            res.send({
-                message:"ok"
-            })
-        }
-    });
-})
 appExpress.use("/dasboard",appDasboard);
 
 appExpress.use("/home", (req,res)=>{

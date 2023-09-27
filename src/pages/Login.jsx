@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 
 async function  logueoDiscord(){
   try{
+    document.cookie = "MasterAcademy-Session=; max-age=0;";
     let result =await fetch("http://localhost:5010");
     if(result.ok){
       window.location.href= "http://localhost:5010/login"

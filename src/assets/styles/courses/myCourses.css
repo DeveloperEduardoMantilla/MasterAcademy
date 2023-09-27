@@ -1,0 +1,16 @@
+.myCourses{
+    margin: 30px;
+    background-color:#1C2833;  
+    display: flex;
+    flex-direction: column;
+
+}
+.myCourses h2{
+    color: #fff;
+}
+
+.myCoursesContent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
