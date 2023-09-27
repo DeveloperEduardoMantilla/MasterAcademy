@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-export default function Protected() {
+export default function Protected({children}) {
   const cookie = decodeURIComponent(document.cookie);
   const session = cookie.split("=")[0];  
  
@@ -15,7 +15,7 @@ export default function Protected() {
     return (
       <>
         <Outlet />
-        <Navigate to="/dasboard" />
+        <Navigate to="/dashboard" />
       </>
     );
   }

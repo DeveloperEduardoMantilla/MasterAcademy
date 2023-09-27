@@ -5,8 +5,20 @@ export default function Course(){
     return (
         <>
           <section className="course">
-            <h1>Lorem ipsum dolor sit.</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis reiciendis modi omnis cumque aut fugit neque. Ratione natus sed illum facere veritatis excepturi. Nesciunt facere et non delectus tempora quam?</p>
+            <div className="description">
+              <h1>React</h1>
+              <p>We are working on the design of the dashboard that the student will see.</p>
+            </div>
+            <div className="details">
+              <div className="category">
+                <h3>Front-End</h3>
+              </div>
+              <div className="date">
+                <h4>2023-10-15</h4>
+              </div>
+            </div>
+            
+            
           </section>
         </>
     )

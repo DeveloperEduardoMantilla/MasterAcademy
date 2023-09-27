@@ -1,15 +1,37 @@
 .course{
-    max-width: 30%;
+
     background: rgb(85, 83, 87);
     padding: 20px 10px;
-    margin: 15px 0;
+    margin: 10px 10px 0 0;
+    border-radius: 10px;
 }
-
-.course h1 {
+.course .description h1 {
     font-size: 16px;
     color: white;
 }
-.course p {
+.course .description p {
     font-size: 12px;
     color: rgb(201, 201, 201);
+}
+.details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+.details .category h3{
+    background-color: rgb(64, 21, 182);
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 10px;
+    margin: 0px 10px;
+}
+.details .date h4{
+    background-color: rgb(64, 21, 182);
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 10px;
 }

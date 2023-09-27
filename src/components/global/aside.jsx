@@ -8,9 +8,9 @@ export default function Aside(){
         <div className="aside">
             <p className="title">Master Academy</p>
             <Link className="to">Home</Link>
-            <Link className="to">Services</Link>
-            <Link className="to">Contact</Link>
-            <Link className="to">Out</Link>
+            <Link className="to">Courses</Link>
+            <Link className="to">My Courses</Link>
+            <Link className="to">Exit</Link>
         </div>
         </>
     )

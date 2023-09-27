@@ -1,7 +1,7 @@
 main{
     display: flex;
     min-width: 100%;
-    background-color: #1C2833;
+    background-color: var(--color1);
 }
 
 .body{

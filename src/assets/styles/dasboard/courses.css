@@ -1,19 +1,18 @@
 .courses{
     margin: 30px;
-    background-color:#1C2833;
     min-height: 200px;
     display: flex;
     flex-wrap: wrap;
-
 }
 
-.courses h2{
+.courses  h2{
     color: #fff;
+    font-weight: 600;
+    font-size: 16px;
 }
 .courses-content{
-    background-color:#1C2833;
     min-height: 200px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: start;
 }
