@@ -9,7 +9,7 @@ import cors from "cors";
 //Routes
 import login from "./router/login.routes.js"
 import appDasboard from "./router/dasboard.routes.js";
-
+import logout from "../src/router/logout.js";
 
 //Configuracion
 dotenv.config();
@@ -39,14 +39,12 @@ appExpress.use((req,res,next)=>{
 })
 
 //Rutas
-appExpress.get("/",(req,res)=>{
-    res.send({message:"ok"})
-})
 appExpress.use("/login", login);
-appExpress.use("/dasboard",appDasboard);
+appExpress.use("/dashboard",appDasboard);
+appExpress.use(logout);
 
-appExpress.use("/home", (req,res)=>{
-    res.send({Message:"Es necesario que se encuentre inscrito en el servidor de CampusLands para el acceso a la plataforma"})
+appExpress.use("/", (req,res)=>{
+    res.send({Message:"Bienvenidos, MasterAcademy cuenta con su propia api para la gestion de contenido, recuerda que es importante estar logueado para poder hacer uso de los diferentes servicios que presta dicha api."})
 })
 
 //Servidor Express 

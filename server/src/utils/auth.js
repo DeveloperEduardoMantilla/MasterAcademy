@@ -8,13 +8,13 @@ appAuth.use((req,res,next)=>{
     if(req.user){
         next()
     }else{
-        res.redirect("/home");
+        res.redirect("/");
     }
 })
 
 appOut.use((req,res,next)=>{
     if(req.user){
-        res.redirect("/dasboard");
+        res.redirect("/dashboard");
     }else{
         next();
     }
