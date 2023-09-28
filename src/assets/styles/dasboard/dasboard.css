@@ -1,7 +1,8 @@
 main{
     display: flex;
     min-width: 100%;
-    background-color: var(--color1);
+    /*background-color: var(--color1);*/
+    background-image: linear-gradient(180deg, #5d6366 0, #415460 25%, #1f4459 50%, #003553 75%, #00264d 100%);
 }
 
 .body{

@@ -3,7 +3,7 @@ import Header from "../components/global/header.jsx";
 import Aside from "../components/global/aside.jsx"
 import "../assets/styles/dasboard/dasboard.css"
 
-function ViewCourse() {
+function MyCourses() {
   return (
     <>
       <main>
@@ -17,4 +17,4 @@ function ViewCourse() {
   );
 }
 
-export default ViewCourse
+export default MyCourses

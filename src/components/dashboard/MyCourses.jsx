@@ -1,5 +1,5 @@
 import react from "react";
-import Course from "../../pages/Course.jsx";
+import Course from "./Course.jsx";
 import "../../assets/styles/courses/myCourses.css"
 
 export default function MyCourses(){

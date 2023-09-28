@@ -16,7 +16,7 @@ export default function Header(){
     return(
         <>
         <header>
-          <nav className="navbar navbar-expand-lg navbar-dark">
+          <nav className="navbar navbar-expand-sm navbar-dark">
             <div className="container">
       
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,5 +1,5 @@
 import {react} from "react"
-import "../assets/styles/courses/course.css"
+import "../../assets/styles/courses/course.css"
 
 export default function Course(){
     return (

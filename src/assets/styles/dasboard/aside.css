@@ -2,14 +2,14 @@
     min-height: 100vh;
     width: 200px;
     padding-top: 22px;
-    background-color: var(--color2);
+    background-image: linear-gradient(180deg, #25282b 0, #415460 25%, #1f4459 50%, #003553 75%, #00264d 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
     color: white;
 }
-.aside .to{
+.item .to{
     padding: 60px 0;
     text-align: center;
     width: 100%;
@@ -18,9 +18,10 @@
     text-decoration: none;
     font-size: 14px;
     font-weight: 300;
+    display: flex;
 }
-.aside .to:hover{
-    background-color: #232529;
+.item .to:hover{
+   border-bottom:2px solid var(--color3)
 }
 
 .aside .title{
@@ -30,4 +31,14 @@
     font-weight: 500;
     padding-bottom: 90px;
     margin: 0 10px;
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+}
+.item{
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }

@@ -8,6 +8,22 @@
 }
 
 :root{
-    --color1:#13161C;
-    --color2:#010101;
+    /*Fondos*/
+    --color1:#000020;
+    --color2:#171a4a;
+    
+    /*Principales*/
+    --color3:#dc77337e;
+    --color4:#239b578c;
+    --color5:#505c6360;
+
+    /*Fondos
+    --color1:#000820;
+    --color2:#000516;
+    
+    
+    /*Principales
+    --color3:#032181;
+    --color4:#032285;
+    --color5:#010c30;*/
 }
