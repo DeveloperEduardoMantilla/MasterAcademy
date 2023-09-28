@@ -8,10 +8,8 @@ const version = routesVersioning();
 appDasboard.use(express.json());
 
 
-
-
 appDasboard.get("/",appAuth, (req,res)=>{
-    res.send(req.user)
+    res.send({message:`User logged in ${req.user.username} with the role of ${req.rol=2?"Administrator":"Student"}`})
 })
 appDasboard.get("/users", appAuth, version(getUsers))
 
