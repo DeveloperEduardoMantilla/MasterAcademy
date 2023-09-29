@@ -1,8 +1,10 @@
 header{
     width: 100%;
+    
 }
 .navbar{
-    background-image: linear-gradient(180deg, #16181a 0, #1d2429 25%,);
+    width: 100%;
+    background-color: var(--background-secondary) ;
 }
 .nav-link img{
     width: 40px;
@@ -15,10 +17,24 @@ header{
     background-color: #15191f;
 }
 .dropdown-item{
-    color: #fff;
+    color: var(--color-title);
     cursor: pointer;
 }
 .dropdown-item:focus, .dropdown-item:hover{
     background-color: #2c5eaa;
-    color: #fff;
+    color: var(--color-title);
+}
+
+.nav-item .nav-link{
+    color: var(--color-title);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnHeader button{
+    background-color: transparent;
+    border:none;
+    font-size: 30px;
 }

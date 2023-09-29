@@ -8,15 +8,19 @@
 }
 
 :root{
-    /*Fondos*/
-    --color1:#000020;
+    /*Background*/
+    --background-main:#202327;
+    --background-secondary:#1e1f22;
+    --background-third: #282a2e;
     --color2:#171a4a;
     
-    /*Principales*/
-    --color3:#dc77337e;
-    --color4:#239b578c;
-    --color5:#505c6360;
+    /*Main*/
+    --color-main:#2E86C1;
+    --color-title:#f1e8e8;
+    --color-card:#3a404936;
 
+    /*Buttons*/
+    --color-button: #2e86c154;
     /*Fondos
     --color1:#000820;
     --color2:#000516;
@@ -26,4 +30,10 @@
     --color3:#032181;
     --color4:#032285;
     --color5:#010c30;*/
+}
+
+main{
+    display: flex;
+    min-width: 100%;
+    background-color: var(--background-main);
 }

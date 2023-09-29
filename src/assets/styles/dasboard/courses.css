@@ -7,7 +7,7 @@
 }
 
 .courses  h2{
-    color: #fff;
+    color: var(--color-main);
     font-weight: 600;
     font-size: 16px;
 }

@@ -23,7 +23,7 @@ passport.use(new Strategy({
     scope: ['identify','guilds']
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
-            
+            console.log(profile);
             let guildName=process.env.NAME_SERVER_DISCORD;
             if(!searchNameInArray(profile.guilds, guildName)){    
                 done(null,false)

@@ -1,20 +1,19 @@
 .course{
-    background: var(--color5);
+    background: var(--color-card);
     padding: 20px 10px;
     margin: 10px 10px 0 0;
-    border-radius: 10px;
-    min-width: 200px;
+    border-radius: 2px;
+    min-width: 300px;
     max-width: 200px;
+    border: 0.1px solid transparent;
 }
 .course:hover{
     cursor: pointer;
-    box-shadow: 5px 7px 10px #0034523a;
-    position: relative;
-    top: -5px;
+    border: 0.1px solid rgb(65, 64, 64);
 }
 .course .description h1 {
     font-size: 16px;
-    color: white;
+    color: var(--color-title);
 }
 .course .description p {
     font-size: 12px;
@@ -35,7 +34,7 @@
     margin: 0px 10px;
 }
 .details .date h4{
-    background-color: var(--color4);
+    background-color: var(--color-button);
     text-align: center;
     color: white;
     padding: 5px;

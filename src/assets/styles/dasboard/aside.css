@@ -2,12 +2,17 @@
     min-height: 100vh;
     width: 200px;
     padding-top: 22px;
-    background-image: linear-gradient(180deg, #25282b 0, #415460 25%, #1f4459 50%, #003553 75%, #00264d 100%);
+    background-color: var(--background-secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     color: white;
+    position: fixed;
+}
+
+.aside.show {
+    display: flex;
 }
 .item .to{
     padding: 60px 0;
@@ -20,22 +25,32 @@
     font-weight: 300;
     display: flex;
 }
-.item .to:hover{
-   border-bottom:2px solid var(--color3)
+.items .item{
+    width: 100%;
+    padding-left: 40px;
 }
+.items .item:hover{
+   background-color: var(--background-third);
+}
+.items .item:hover .rotate-vert-center{-webkit-animation:rotate-center .6s ease-in-out both;animation:rotate-center .6s ease-in-out both}
+@-webkit-keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 
 .aside .title{
-    font-size: 18px;
+    position: absolute;
+    top: 0;
+    padding: 6px 0;
+    font-size: 20px;
     text-align: center;
-    color: #fff;
-    font-weight: 500;
-    padding-bottom: 90px;
-    margin: 0 10px;
+    color: var(--color-title);
+    font-weight: 600;
+    width: 100%;
+    background-color: var(--color-main);
 }
 
 .items{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .item{
     display: flex;

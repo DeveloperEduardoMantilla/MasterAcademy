@@ -1,16 +1,21 @@
-main{
-    display: flex;
-    min-width: 100%;
-    /*background-color: var(--color1);*/
-    background-image: linear-gradient(180deg, #5d6366 0, #415460 25%, #1f4459 50%, #003553 75%, #00264d 100%);
-}
-
 .body{
     width: 100%;
+    margin-left: 200px;
 }
 
 @media (max-width: 1000px) {
     .aside{
+        display: none;
+    }
+    .body{
+        margin: 0;
+    }
+    .aside .title{
+        position: relative;
+    }
+}
+@media (min-width:1000px){
+    .btnHeader{
         display: none;
     }
 }
