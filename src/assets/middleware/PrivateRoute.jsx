@@ -1,22 +1,11 @@
-import { Navigate, Outlet, Route } from "react-router-dom";
-/*
-export default function PrivateRoute({path, children, redirectTo }){
+import { Navigate, Outlet, Route, useLocation  } from "react-router-dom";
+export default function Protected() {
+
   const cookie = decodeURIComponent(document.cookie);
   const session = cookie.split("=")[0];  
 
-  return (
-    <Route
-      path={path}
-      element={session ? <Navigate to={redirectTo} /> : children}
-    >
-    </Route>
-  )
-}*/
+  let location = useLocation();
 
-export default function Protected({children}) {
-  const cookie = decodeURIComponent(document.cookie);
-  const session = cookie.split("=")[0];  
- 
   if(!session) {
      return (
       <>
@@ -28,7 +17,7 @@ export default function Protected({children}) {
       return (
         <>
           <Outlet />
-          <Navigate to="/dashboard" />
+          <Navigate to={location.pathname || "/dashboard"}/>
         </>
       );
     }
