@@ -16,15 +16,15 @@ export default function Aside(){
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faBook} style={{color: "#2E86C1",}}/>
-                    <Link className="to"  to={"/courses"}> Courses</Link>
+                    <Link className="to"  to={"/dashboard/courses"}> Courses</Link>
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faBookmark} style={{color: "#8E44AD",}}/>
-                    <Link className="to"  to={"/mycourses"}> My Course</Link>
+                    <Link className="to"  to={"/dashboard/mycourses"}> My Course</Link>
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faUser} style={{color: "#117A65",}}/>
-                    <Link className="to" to={"/profile"}> Profile</Link>
+                    <Link className="to" to={"/dashboard/profile"}> Profile</Link>
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faArrowRightFromBracket} style={{color: "#E74C3C",}}/>
