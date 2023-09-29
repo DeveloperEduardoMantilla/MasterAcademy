@@ -13,6 +13,7 @@ import MyCourses from './pages/MyCourses.jsx';
 import ViewCourse from "./pages/ViewCourse.jsx";
 import Protected from './assets/middleware/PrivateRoute.jsx';
 import DasHome from "./components/dashboard/DasHome.jsx";
+import Main from "./pages/Main.jsx";
 
 import "../src/assets/styles/main.css"
 
@@ -23,9 +24,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
           <Route element={<Protected />}>
             <Route path="dashboard" element={<Dasboard/>}></Route>
+            <Route path="dashboard" element={<Dasboard/>}></Route>
             <Route path="courses" element={<Courses/>}></Route>
             <Route path="mycourses" element={<MyCourses/>}></Route>
             <Route path="ViewCourse" element={<ViewCourse/>}></Route>
+            <Route path="profile" element={<ViewCourse/>}></Route>
           </Route>
 
           <Route path="login" element={<Login/>} />   

@@ -9,7 +9,7 @@ export default function Courses(){
     fetch('http://192.168.128.23:5010/cursos/all')
       .then((response) => response.json())
       .then((data) => {
-        setCoursesData(data.courses);
+        setCoursesData(data);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -23,7 +23,7 @@ export default function Courses(){
           <div className="courses-content">
               {Array.isArray(coursesData) ? (
               coursesData.map((course) => (
-                <Course key={course.id} title={course.folder} description={course.nameCourse} urlImg={course.imagenCourse} />
+                <Course key={course.id} title={course.folder} description={course.nameCourse} urlImg={course.imagenCourse} state={false} />
               ))
             ) : (
               <p>Loading...</p>

@@ -10,7 +10,7 @@ function Courses() {
       <Aside/>
         <section className='body'>
           <Header/>
-
+       
         </section>
       </main>
     </>
