@@ -1,12 +1,26 @@
 .course{
     background: var(--color-card);
-    padding: 20px 10px;
     margin: 10px 10px 0 0;
     border-radius: 2px;
     min-width: 300px;
-    max-width: 200px;
+    width: 300px;
     border: 0.1px solid transparent;
+    display: flex;
+    flex-direction: column;
 }
+.course .description{
+    width: 300px;
+    padding: 10px 15px ;
+}
+.course .capa{
+    width: 100%;
+    height: 120px;
+    background-position: cemter;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 .course:hover{
     cursor: pointer;
     border: 0.1px solid rgb(65, 64, 64);
