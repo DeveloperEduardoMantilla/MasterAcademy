@@ -35,11 +35,11 @@ export default function Login() {
               <p>MasterAcademy is a web-based software development project with an educational approach that allows users called students as a role within the system to acquire knowledge managed by administrators.</p>
           </div>
           <div className="content-md2">
-              <h3>Bienvenidos a Master Academy</h3>
+              <h3>Welcome to<br/> Master Academy</h3>
               <p>MasterAcademy is a web-based software development project with an educational approach that allows users called students as a role within the system to acquire knowledge managed by administrators.</p>
               <div className='buttons'>
                 <button onClick={logueoDiscord} className="btn btn-ingresar">Login Discord</button>
-                <Link className='btn btn-cancelar' to={"/"}>Cancelar</Link>
+                <Link className='btn btn-cancelar' to={"/"}>Cancel</Link>
               </div>
           </div>
       </div>
