@@ -1,10 +1,14 @@
 import React from 'react';
+import ProfileComponent from "../components/users/profile.jsx";
 import "../assets/styles/dasboard/dasboard.css"
+import "../assets/styles/users/profile.css"
 
 function Profile() {
   return (
     <>
-      <h2 className='bg-white'>Hola mundo, este es el modulo de profile</h2>
+      <div className="content-profile">
+        <ProfileComponent/>
+      </div>
     </>
   );
 }

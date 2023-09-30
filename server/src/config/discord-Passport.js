@@ -11,8 +11,8 @@ passport.deserializeUser((user, done)=>{
     done(null, user)
 })
 
-function searchNameInArray(arr, nombreBuscado) {
-    const resultado = arr.find(objeto => objeto.name === nombreBuscado);
+function searchidInArray(arr, idSearch) {
+    const resultado = arr.find(objeto => objeto.id === idSearch);
     return !!resultado;
 }
 
@@ -23,9 +23,8 @@ passport.use(new Strategy({
     scope: ['identify','guilds']
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
-            console.log(profile);
-            let guildName=process.env.NAME_SERVER_DISCORD;
-            if(!searchNameInArray(profile.guilds, guildName)){    
+            let guildId=process.env.ID_SERVER_DISCORD;
+            if(!searchidInArray(profile.guilds, guildId)){    
                 done(null,false)
                 return;
             }
