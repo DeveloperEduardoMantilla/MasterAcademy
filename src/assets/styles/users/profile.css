@@ -1,5 +1,67 @@
 .content-profile{
     width: 100%;
     display: flex;
+    flex-direction: column;
+}
+.background-profile{
+    width: 100%;
+    height: 300px;
+    background-image: url("../../img/background-profile.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.details-profile{
+    position: relative;
+}
+.details-profile .profile{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: -70px;
+    left: 40px;
+    background-color: var(--background-third);
+    color: var(--color-title);
+    text-align: center;
+}
+.profile .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-bottom: 30px;
+}
+.profile .info .content-info{
+    position: relative;
+}
+.profile .info .content-info img{
+    width: 80px;
+}
+
+.profile .info p{
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    background-color: var(--color-main);
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.details-profile .profile h2{
+    font-size: 26px;
+    color: #d1cbcb;
+    font-weight: 600;
+}
+.details-profile .profile h3{
+    font-size: 16px;
+    color: #9c9999;
+}
+.details-profile .profile h4{
+    font-size: 14px;
+    color: #9c9999;
 }

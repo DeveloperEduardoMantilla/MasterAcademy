@@ -6,9 +6,7 @@ import "../assets/styles/users/profile.css"
 function Profile() {
   return (
     <>
-      <div className="content-profile">
-        <ProfileComponent/>
-      </div>
+      <ProfileComponent/>
     </>
   );
 }
