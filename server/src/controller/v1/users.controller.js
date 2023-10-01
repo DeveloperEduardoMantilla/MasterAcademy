@@ -5,7 +5,27 @@ const getUsersController=async(req,res)=>{
     try {
         let db = await conx();
         let user = db.collection("user");
-        let result = await user.find().toArray();
+        let result = await user.aggregate([{
+            $lookup: {
+              from: 'role',
+              localField: 'roleId',
+              foreignField: 'id',
+              as: 'role'
+            }},
+      {
+          $project: {
+            id: 1,
+            username: 1,
+            fullName: 1,
+            loginCount: 1,
+            lastLogin: 1,
+            creationDate: 1,
+            role: { $first: "$role.name" }
+          }
+      }
+        ]).toArray();
+
+
         return res.status(200).send(result); 
     } catch (error) {
         res.status(500).send({message:error.stack});

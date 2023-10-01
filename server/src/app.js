@@ -14,7 +14,10 @@ import logout from "../src/router/logout.js";
 //Configuracion
 dotenv.config();
 let appExpress = express();
-appExpress.use(cors())
+appExpress.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+  }))
 appExpress.use(express.json());
 appExpress.use(session({
     secret:process.env.JWT_PRIVATE_KEY,
@@ -37,15 +40,19 @@ appExpress.use((req,res,next)=>{
     appDasboard.locals.user = req.user;
     next();
 })
-
+appExpress.use((req, res, next) => {
+    console.log('Requested URL:', req.url);
+    next();
+  });
 //Rutas
+
 appExpress.use("/login", login);
 appExpress.use("/dashboard",appDasboard);
 appExpress.use(logout);
-
 appExpress.use("/", (req,res)=>{
     res.send({Message:"Bienvenidos, MasterAcademy cuenta con su propia api para la gestion de contenido, recuerda que es importante estar logueado para poder hacer uso de los diferentes servicios que presta dicha api."})
 })
+
 
 //Servidor Express 
 let config = JSON.parse(process.env.MY_SERVER)
