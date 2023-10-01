@@ -37,3 +37,16 @@ main{
     min-width: 100%;
     background-color: var(--background-main);
 }
+
+.content-loading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading{
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+}

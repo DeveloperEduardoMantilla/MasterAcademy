@@ -2,7 +2,6 @@
     margin: 30px;
     display: flex;
     flex-direction: column;
-
 }
 .myCourses h2{
     color: var(--color-main);
@@ -14,4 +13,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
+    height: 200px;
 }
