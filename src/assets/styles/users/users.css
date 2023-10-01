@@ -1,0 +1,54 @@
+.content-users{
+    margin: 30px;
+}
+.content-users .title{
+    display: flex;
+    align-items: center;
+}
+.content-users .title h2{
+    color: var(--color-main);
+    font-size: 20px;
+    padding: 0 10px;
+    margin: 0;
+}
+
+.table{
+    overflow: visible;
+}
+.content-users table{
+    width: 100%;
+    margin-top: 20px;
+}
+
+thead tr th{
+    background-color: #1E1F22;
+    color: #b9b4b4;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 400;
+}
+
+tbody tr td, tbody tr th{
+    background-color: #3c4147;
+    padding: 10px 0;
+    text-align: center;
+    color: #b9b4b4;
+    
+}
+
+.state-1 span{
+    background-color: #28B463;
+    padding: 1px 4px;
+    border-radius: 10px;
+    color: var(--color-title);
+}
+
+.state-0 span{
+    background-color: #CB4335;
+    padding: 1px 4px;
+    border-radius: 10px;
+    color: var(--color-title);
+}
+.state-button:hover{
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import react from "react";
 import "../../assets/styles/dasboard/aside.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faBook, faArrowRightFromBracket,faBookmark,faUser} from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faBook, faArrowRightFromBracket,faBookmark,faUser, faUsers} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function Aside(){
@@ -25,6 +25,10 @@ export default function Aside(){
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faUser} style={{color: "#117A65",}}/>
                     <Link className="to" to={"/dashboard/profile"}> Profile</Link>
+                </div>
+                <div className="item">
+                    <FontAwesomeIcon className="rotate-vert-center" icon={faUsers} style={{color: "#2980B9",}}/>
+                    <Link className="to" to={"/dashboard/users"}> Users</Link>
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faArrowRightFromBracket} style={{color: "#E74C3C",}}/>
