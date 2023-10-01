@@ -12,6 +12,7 @@ import MyCourses from './pages/MyCourses.jsx';
 import Profile from "./pages/Profile.jsx";
 import ViewCourse from "./pages/ViewCourse.jsx";
 import Protected from './assets/middleware/PrivateRoute.jsx';
+import RenderCourse from './pages/RenderCourse.jsx'
 import Users from './pages/users.jsx';
 import Main from "./pages/Main.jsx";
 
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path="courses" element={<Courses/>}></Route>
               <Route path="mycourses" element={<MyCourses/>}></Route>
               <Route path="ViewCourse/:nameCurse" element={<ViewCourse/>}></Route>
+              <Route path="ViewCourse/:nameCurse/view" element={<RenderCourse/>}></Route>
               <Route path="profile" element={<Profile/>}></Route>
               <Route path="users" element={<Users/>}></Route>
             </Route>
