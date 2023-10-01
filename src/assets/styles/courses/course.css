@@ -45,3 +45,7 @@
 .description button:focus{
     background-color: red;
 }
+
+.course-link{
+    text-decoration: none;
+}

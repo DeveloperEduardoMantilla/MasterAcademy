@@ -1,3 +1,111 @@
-*{
-    
+.content-viewCourse{
+    width: 100%;
+    background-color: var(--color-card);
+    /*background-image: url("https://i0.wp.com/www.csscodelab.com/wp-content/uploads/2020/03/three-js-background-animation-wave-canvas.png?fit=1069%2C708&ssl=1");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background: #00d2ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        display: flex;
+    justify-content: center;
+}
+.datails-viewCourse{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    /*background-color: rgba(55, 55, 59, 0.39);*/
+}
+.datails-viewCourse .details-course{
+    width: 600px;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+.datails-viewCourse .details-course h1{
+    font-size: 45px;
+    font-weight: 600;
+    color: #f2f2f2;   
+    margin: 0;
+}
+.datails-viewCourse .details-course h2{
+    font-size: 16px;
+    color:  var(--color-title);   
+    margin: 0;
+}
+.datails-viewCourse .details-course button{
+    font-size: 16px;
+    color: var(--color-title);   
+    background-color: var(--background-main);
+    padding: 10px 5px;
+    border: none;
+    width: auto;
+    transition: all ease-in-out 0.5s;
+}
+.datails-viewCourse .details-course button:hover{
+    background-color: #1e1f22c7;
+}
+.datails-viewCourse .img-course{
+    width: 500px;
+    background-color: var(--background-main);
+    position: relative;
+}
+.itemco{ 
+    -webkit-animation: rotate-vert-center 2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: rotate-vert-center 2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+
+@-webkit-keyframes rotate-vert-center {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+    }
+  }
+  @keyframes rotate-vert-center {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+    }
+  }
+.itemco-1{
+    background-color: #D4AC0D;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+}
+.itemco-2{
+    background-color: #229954;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    border-radius: 50%;
+}
+.itemco-3{
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    border-radius: 50%;
 }
