@@ -9,11 +9,21 @@
     justify-content: center;
     color: white;
     position: fixed;
+    transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .aside.show {
-    display: flex;
+    transform: translateX(0);
 }
+
+@media (max-width:1000px){
+    .aside{
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        
+    }
+}
+
 .item .to{
     padding: 60px 0;
     text-align: center;

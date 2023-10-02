@@ -41,3 +41,21 @@ main{
     height: 150px;
     border-radius: 10px;
 }
+
+
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+::-webkit-scrollbar-thumb {
+background-color: var(--background-third);
+border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background-color:  var(--background-third);
+}
+
+::-webkit-scrollbar-track {
+background-color: var(--color-main);
+}
