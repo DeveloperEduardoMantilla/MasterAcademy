@@ -1,28 +1,10 @@
 use("MasterAcademy")
-db.createCollection('role', {
-    validator: {
-        $jsonSchema: {
-            bsonType: 'object',
-            required: ["id", "name"],
-            properties: {
-                id: {
-                    bsonType: "number",
-                    description: "The id must be of integer type"
-                },
-                name: {
-                    bsonType: "string",
-                    description: "The name must be of string type"
-                }
-            }
-        }
-    }
-})
 
 db.createCollection('user', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: ["id", "username", "fullName", "creationDate", "lastLogin", "roleId"],
+            required: ["id", "username", "creationDate", "role","state"],
             properties: {
                 id: {
                     bsonType: "number",
@@ -32,33 +14,29 @@ db.createCollection('user', {
                     bsonType: "string",
                     description: "The username must be of string type"
                 },
-                fullName: {
-                    bsonType: "string",
-                    description: "The fullName must be of string type"
-                },
                 loginCount: {
-                    bsonType: "string",
-                    description: "The loginCount must be of string type"
+                    bsonType: "number",
+                    description: "The loginCount must be of number type"
                 },
                 lastLogin: {
                     bsonType: "string",
                     description: "The lastLogin must be of string type"
                 },
-                email: {
-                    bsonType: "string",
-                    description: "The email must be of string type"
-                },
-                authentication: {
-                    bsonType: "string",
-                    description: "The authentication must be of string type"
-                },
                 creationDate: {
                     bsonType: "string",
                     description: "The creationDate must be of string type"
                 },
-                roleId: {
+                role: {
+                    bsonType: "number",
+                    description: "The role must be of integer type"
+                },
+                state: {
                     bsonType: "number",
                     description: "The roleId must be of integer type"
+                },
+                profile: {
+                    bsonType: "string",
+                    description: "The roleId must be of string type"
                 }
             }
         }
@@ -69,7 +47,7 @@ db.createCollection('courseRegistration', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: ["id", "studentId", "courseId", "date"],
+            required: ["id", "studentId", "courseId", "date", "state"],
             properties: {
                 id: {
                     bsonType: "number",
@@ -86,6 +64,10 @@ db.createCollection('courseRegistration', {
                 date: {
                     bsonType: "string",
                     description: "The date must be of string type"
+                },
+                state: {
+                    bsonType: "string",
+                    description: "The date must be of string type"
                 }
             }
         }
@@ -96,7 +78,7 @@ db.createCollection('course', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: ["id", "name", "description", "status", "categoryId", "date", "administratorId"],
+            required: ["id", "name", "description", "date", "userId"],
             properties: {
                 id: {
                     bsonType: "number",
@@ -110,21 +92,13 @@ db.createCollection('course', {
                     bsonType: "string",
                     description: "The description must be of string type"
                 },
-                status: {
-                    bsonType: "string",
-                    description: "The status must be of string type"
-                },
-                categoryId: {
-                    bsonType: "number",
-                    description: "The categoryId must be of integer type"
-                },
                 date: {
                     bsonType: "string",
                     description: "The date must be of string type"
                 },
-                administratorId: {
+                userId: {
                     bsonType: "number",
-                    description: "The administratorId must be of integer type"
+                    description: "The userId must be of integer type"
                 }
             }
         }
@@ -154,25 +128,6 @@ db.createCollection('lesson', {
     }
 })
 
-db.createCollection('category', {
-    validator: {
-        $jsonSchema: {
-            bsonType: 'object',
-            required: ["id", "name"],
-            properties: {
-                id: {
-                    bsonType: "number",
-                    description: "The id must be of integer type"
-                },
-                name: {
-                    bsonType: "string",
-                    description: "The name must be of string type"
-                }
-            }
-        }
-    }
-})
-
 db.createCollection('class', {
     validator: {
         $jsonSchema: {
@@ -195,10 +150,6 @@ db.createCollection('class', {
                     bsonType: "string",
                     description: "The videoUrl must be of string type"
                 },
-                duration: {
-                    bsonType: "string",
-                    description: "The duration must be of string type"
-                },
                 lessonId: {
                     bsonType: "number",
                     description: "The lessonId must be of integer type"
@@ -212,15 +163,15 @@ db.createCollection('classRating', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: ["id", "videoId", "studentId", "comment", "date"],
+            required: ["id", "classId", "studentId", "comment", "date"],
             properties: {
                 id: {
                     bsonType: "number",
                     description: "The id must be of integer type"
                 },
-                videoId: {
+                classId: {
                     bsonType: "number",
-                    description: "The videoId must be of integer type"
+                    description: "The classId must be of integer type"
                 },
                 studentId: {
                     bsonType: "number",
@@ -233,10 +184,6 @@ db.createCollection('classRating', {
                 date: {
                     bsonType: "string",
                     description: "The date must be of string type"
-                },
-                rating: {
-                    bsonType: "string",
-                    description: "The rating must be of string type"
                 }
             }
         }
