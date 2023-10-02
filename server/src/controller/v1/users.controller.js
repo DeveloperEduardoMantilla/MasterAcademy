@@ -29,7 +29,15 @@ const getUserIdController =  async(req, res)=>{
     }
 }
 
+const getUserLogoutController = async(req, res)=>{
+    try{
+        res.status(200).send(req.user);
+    }catch(error){
+        res.status(500).send({message:error})
+    }
+}
 export {
     getUsersController,
-    getUserIdController
+    getUserIdController,
+    getUserLogoutController
 }
