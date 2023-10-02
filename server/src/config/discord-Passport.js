@@ -38,18 +38,19 @@ passport.use(new Strategy({
             if(res==null || Object.keys(res).length==0){
                 let newUser = {
                     id:parseInt(profile.id),
-                    username: profile.username,
-                    fullName: profile.username,
-                    loginCount:"1",
+                    username: profile.username, 
+                    loginCount:1,
                     lastLogin:fecha.toString(),
                     creationDate:fecha.toString(),
-                    roleId:2
+                    role:1,
+                    state:1,
+                    profile:"https://cdn.discordapp.com/avatars/"+profile.id+"/"+profile.avatar+".png"
                 }
                 await user.insertOne(newUser);
                 done(null, newUser)
             }else{
                 let cant = parseInt(res.loginCount)+1;
-                await user.updateOne({id:parseInt(profile.id)},{$set:{loginCount:cant.toString(), lastLogin:fecha.toString()}})
+                await user.updateOne({id:parseInt(profile.id)},{$set:{loginCount:cant, lastLogin:fecha.toString()}})
                 done(null,res)
             }
     }catch(error){
