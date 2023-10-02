@@ -15,7 +15,6 @@ function Userregistrated() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setUsersData(data);
         setLoading(false);
       })
@@ -34,6 +33,7 @@ function Userregistrated() {
         <table className="">
           <thead>
             <tr>
+              <th scope="col">Profile</th>
               <th scope="col">UserName</th>
               <th scope="col">LoginAccount</th>
               <th scope="col">LastLogin</th>
@@ -48,12 +48,22 @@ function Userregistrated() {
             ): (
               usersData.map((course) => (
                 <tr key={course.id}>
-                  <td>{course.fullName}</td>
+                  <td><img src={course.profile} width={"30px"} /></td>
+                  <td>{course.username}</td>
                   <td>{course.loginCount}</td>
                   <td>{course.lastLogin}</td>
                   <td>{course.creationDate}</td>
-                  <td>{course.role}</td>
-                  <td className='state-button state-1'><span>Active</span></td>
+                  {
+                    course.role==1? 
+                    <td>Administrator</td>
+                    : <td>Student</td>
+                  }
+                  {
+                    course.state==1? 
+                    <td className='state-button state-1'><span>Active</span></td>
+                    : <td className='state-button state-0'><span>Disabled</span></td>
+                  }
+                  
               </tr>
               ))
             )} 

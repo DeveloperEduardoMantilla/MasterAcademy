@@ -1,4 +1,5 @@
 //In progress - Construction querys 
 
 //state - user => ( 0 disabled - 1 activated )
+//state - user - Rol => ( 0 student - 1 administrator )
 //state - courseRegistration => ( 0 denied - 1 allowed )

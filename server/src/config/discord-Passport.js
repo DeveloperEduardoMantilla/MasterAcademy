@@ -38,7 +38,7 @@ passport.use(new Strategy({
             if(res==null || Object.keys(res).length==0){
                 let newUser = {
                     id:parseInt(profile.id),
-                    username: profile.username, 
+                    username: "@"+profile.username, 
                     loginCount:1,
                     lastLogin:fecha.toString(),
                     creationDate:fecha.toString(),
