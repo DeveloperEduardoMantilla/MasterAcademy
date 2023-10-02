@@ -1,6 +1,24 @@
 import "../../assets/styles/users/profile.css"
+import {useState, useEffect, React} from "react"
 
 const Profile =()=>{
+    const [UserData, setUserData] = useState([]);
+    useEffect(() => {
+      let ruta="http://localhost:5010/dashboard/userLogout";
+      fetch(ruta, {
+        method: "GET",
+        credentials: "include",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setUserData(data);
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log("Error 23 => " + error);
+        });
+    }, []);
+
     return (
         <>
             <div className="content-profile">
@@ -10,13 +28,19 @@ const Profile =()=>{
                     <div className="profile">
                         <div className="info">
                             <div className="content-info">
-                                <img src="https://cdn.discordapp.com/avatars/606870241720401959/dcc4677ea230feaa46fc8a3810a6d08a.png" alt=""></img>
-                                <p>42</p>
+                                <img src={UserData.profile} alt=""></img>
+                                <p>{UserData.loginCount}</p>
                             </div>
                         </div>
-                        <h2>eduardo.5253</h2>
-                        <h3>Administrator</h3>
-                        <h4>22/9/2023, 6:42:22 p. m.</h4>
+                        <h2>{UserData.username}</h2>
+                        {
+                            UserData.role ===1 ?
+                            <h3>Administrator</h3>
+                            :   
+                            <h3>Student</h3>
+                        }
+                        
+                        <h4>{UserData.creationDate}</h4>
                     </div>
                 </div>
             </div>
