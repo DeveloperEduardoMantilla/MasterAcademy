@@ -17,7 +17,7 @@ const getUserIdController =  async(req, res)=>{
     try{
         let db = await conx();
         let user = db.collection("user");
-        let result = await user.find({id:parseInt(req.params.id)}).toArray();
+        let result = await user.find({id:req.params.id}).toArray();
 
         if(Object.keys(result).length == 0){
             res.status(200).send({ status: "success", messsage:`No se encontraron registros en el sistema.`})
@@ -33,7 +33,7 @@ const getUserLogoutController = async(req, res)=>{
     try{
         let db = await conx();
         let user = db.collection("user");
-        let result = await user.find({id:parseInt(req.user.id)}).toArray();
+        let result = await user.find({id:req.user.id}).toArray();
 
         if(Object.keys(result).length == 0){
             res.status(200).send({ status: "success", messsage:`No se encontraron registros en el sistema.`})
