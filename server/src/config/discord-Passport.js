@@ -33,7 +33,7 @@ passport.use(new Strategy({
             let user =db.collection("user");
             let date = new Date;
             let fecha = date.toLocaleString();
-            let res = await user.findOne({id:parseInt(profile.id)});
+            let res = await user.findOne({id:profile.id});
 
             if(res==null || Object.keys(res).length==0){
                 let newUser = {
@@ -50,7 +50,7 @@ passport.use(new Strategy({
                 done(null, newUser)
             }else{
                 let cant = parseInt(res.loginCount)+1;
-                await user.updateOne({id:parseInt(profile.id)},{$set:{loginCount:cant, lastLogin:fecha.toString()}})
+                await user.updateOne({id:profile.id},{$set:{loginCount:cant, lastLogin:fecha.toString()}})
                 done(null,res)
             }
     }catch(error){
