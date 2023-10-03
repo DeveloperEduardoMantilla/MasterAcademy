@@ -47,15 +47,13 @@ const getUserLogoutController = async(req, res)=>{
 
 const postCourseRegistrationController = async(req, res)=>{
     try{
-        console.log("Llegue aca!!");
         let db = await conx();
         let user = db.collection("courseRegistration");
-        console.log(req.body)
-        await user.insert(req.body)
-        console.log(result);
-        res.status.send({message:'Registro ingresado con exito'})
+        await user.insertOne(req.body)
+        res.status(200).send({message:'Registro ingresado con exito'})
     }catch(error){
-        res.status(500).send({message:error})
+        console.log({message:error.message});
+        res.status(500).send({message:error.message})
     }
 }
 

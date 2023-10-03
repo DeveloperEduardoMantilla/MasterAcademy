@@ -4,6 +4,9 @@ import routesVersioning from "express-routes-versioning";
 import {getUsers, getUserId, getUserLogout, postCourseRegistration} from "../support/v1.users.js"
 import {appAuth, appOut} from "../utils/auth.js";
 import appValidateId from "../middlewares/validateId.js";
+import {registrationCourse} from "../storage/dto.courses.js";
+import {verifyDTO} from "../middlewares/DTO/validator-errors.js"
+
 const appDasboard = express();
 const version = routesVersioning();
 appDasboard.use(express.json());
@@ -16,7 +19,7 @@ appDasboard.get("/",appAuth, (req,res)=>{
 appDasboard.get("/users", appAuth,  version(getUsers))
 appDasboard.get("/user/:id", appAuth, appValidateId, version(getUserId))
 appDasboard.get("/userLogout", appAuth, version(getUserLogout))
-appDasboard.post("/courseRegistration", version(postCourseRegistration))
+appDasboard.post("/courseregistration", registrationCourse, verifyDTO, version(postCourseRegistration));
 
 
 export default appDasboard;
