@@ -73,10 +73,27 @@ const getCourseRegistrationController = async(req, res)=>{
     }
 }
 
+const getValidationRegistredController = async(req,res)=>{
+    try{
+        let db = await conx();
+        let result2 = db.collection("courseRegistration");
+        let result = await result2.find({userId:req.body.userId, course:req.body.course}).toArray();
+
+        if(Object.keys(result).length > 0){
+            res.status(200).send({data:result})
+        }else{
+            res.status(200).send({data:"null"})
+        }
+    }catch(error){
+        res.status(500).send({message:error})
+    }
+}
+
 export {
     getUsersController,
     getUserIdController,
     getUserLogoutController,
     postCourseRegistrationController,
-    getCourseRegistrationController
+    getCourseRegistrationController,
+    getValidationRegistredController
 }

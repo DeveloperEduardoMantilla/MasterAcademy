@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import Secciones from "../components/courses/Secciones.jsx";
 import "../assets/styles/dasboard/dasboard.css";
 import "../assets/styles/courses/viewCourse.css";
 import Loading from "../components/global/loading.jsx";
@@ -8,6 +7,7 @@ import Swal from 'sweetalert2'
 
 function ViewCourse() {
   const [loading, setLoading] = useState(true);
+  const [buttonState, setButtonState]= useState(false);
   const [cursoEncontrado, setCursoEncontrado] = useState(null);
   const { nameCurse } = useParams();
 
@@ -47,6 +47,7 @@ function ViewCourse() {
       let newRegistrated = await fetch("http://localhost:5010/dashboard/courseregistration", optionsPost);
       let responsenewRegistrated = await newRegistrated.json();
      
+      setButtonState(true)
     } catch (error) {
       console.error("Error al consumir la API userLogout: " + error);
       throw error;
@@ -91,7 +92,7 @@ function ViewCourse() {
             <div className="details-course">
               <h1>{cursoEncontrado.folder}</h1>
               <h2>{cursoEncontrado.nameCourse}</h2>
-              <button onClick={registerCourse}>Inscríbete ahora</button>
+              {buttonState?<button style={{"backgroundColor":"green"}}>En espera</button>:<button onClick={registerCourse}>Inscríbete ahora</button>}
             </div>
             <div className="img-course">
               <img width={"100%"} src={cursoEncontrado.imagenCourse} alt={cursoEncontrado.nameCourse} />
