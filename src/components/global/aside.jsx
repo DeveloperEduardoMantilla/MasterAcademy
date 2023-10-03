@@ -35,6 +35,10 @@ export default function Aside(){
                     <Link className="to" to={"/dashboard/ViewCourse/git/view"}>View Course</Link>
                 </div>
                 <div className="item">
+                    <FontAwesomeIcon className="rotate-vert-center" icon={faBook} style={{color: "green",}}/>
+                    <Link className="to" to={"/dashboard/courseRequest"}>Request</Link>
+                </div>
+                <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faArrowRightFromBracket} style={{color: "#E74C3C",}}/>
                     <Link className="to" to={"/"}> Exit</Link>
                 </div>

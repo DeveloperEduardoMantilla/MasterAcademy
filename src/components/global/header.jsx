@@ -33,7 +33,7 @@ export default function Header(){
         setUserData(data);
       })
       .catch((error) => {
-        console.log("Error 23 => " + error);
+        console.log(error);
       });
   }, []);
   

@@ -12,7 +12,6 @@ const Profile =()=>{
         .then((response) => response.json())
         .then((data) => {
           setUserData(data);
-          console.log(data);
         })
         .catch((error) => {
           console.log("Error 23 => " + error);
