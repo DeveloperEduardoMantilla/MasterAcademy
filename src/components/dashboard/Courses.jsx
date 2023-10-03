@@ -27,8 +27,8 @@ export default function Courses(){
             {loading ? (
               <Loading/>
             ): (
-              coursesData.map((course) => (
-                <Course key={course.id} title={course.folder} description={course.nameCourse} urlImg={course.imagenCourse} state={false} />
+              coursesData.map((course, key) => (
+                <Course key={key} title={course.folder} description={course.nameCourse} urlImg={course.imagenCourse} state={false} />
               ))
             )} 
           </div>

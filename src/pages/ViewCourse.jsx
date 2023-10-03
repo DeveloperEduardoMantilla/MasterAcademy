@@ -6,8 +6,10 @@ import Loading from "../components/global/loading.jsx";
 import Swal from 'sweetalert2'
 
 function ViewCourse() {
+
   const [loading, setLoading] = useState(true);
   const [buttonState, setButtonState]= useState(false);
+  const [stateRegistrated, setstateRegistrated]= useState("");
   const [cursoEncontrado, setCursoEncontrado] = useState(null);
   const { nameCurse } = useParams();
 
@@ -16,24 +18,21 @@ function ViewCourse() {
   }
 
   async function registerCourse(){
-
     try {
+
       let options = {
         method: "GET",
         credentials: "include"
       };
-
-      let response = await fetch("http://localhost:5010/dashboard/userLogout", options);
+      let response = await(await fetch("http://localhost:5010/dashboard/userLogout", options)).json();
       let date = new Date;
       let fecha = date.toLocaleString(undefined,{hour12: true});
-
-      let data = await response.json();
       
-      data = {
+      let data = {
         "course":nameCurse,
         "date":fecha.toString(),
         "state":"0",
-        "userId":data.id
+        "userId":response.id
       }
       
       let optionsPost = {
@@ -44,43 +43,74 @@ function ViewCourse() {
           "Content-Type": "application/json",  
       }}
 
-      let newRegistrated = await fetch("http://localhost:5010/dashboard/courseregistration", optionsPost);
-      let responsenewRegistrated = await newRegistrated.json();
-     
+      await fetch("http://localhost:5010/dashboard/courseregistration", optionsPost);
+
       setButtonState(true)
+      Swal.fire({
+        position: 'bottom-end', 
+        icon: 'success',
+        title: 'Registro con exito',
+        toast: true, 
+        showConfirmButton: false, 
+        timer: 3000, 
+        timerProgressBar: true
+      }) 
     } catch (error) {
       console.error("Error al consumir la API userLogout: " + error);
       throw error;
     }
-
-    Swal.fire({
-      position: 'bottom-end', 
-      icon: 'success',
-      title: 'Registro con exito',
-      toast: true, 
-      showConfirmButton: false, 
-      timer: 3000, 
-      timerProgressBar: true
-    }) 
-
   }
 
-    
-  useEffect(() => {
-    fetch('http://192.168.128.23:5010/cursos/all')
-      .then((response) => response.json())
-      .then((data) => {
-        const cursoEncontrado = filterCurse(data, nameCurse);
-        setCursoEncontrado(cursoEncontrado);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log("Error => " + error);
-        setLoading(true);
-      });
+  const validateRegistratedUser =async ()=>{
+    setLoading(true);
+    let optionsValidate = {
+      method: "GET",
+      credentials: "include"
+    };
+    let dataUser = await(await fetch("http://localhost:5010/dashboard/userLogout", optionsValidate)).json();
 
-      
-  }, [nameCurse]);
+    let data={
+        "userId":dataUser.id,
+        "course":nameCurse
+    }
+    let options = {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",  
+    }}
+
+
+    let response = await(await fetch("http://localhost:5010/dashboard/validationRegistred", options)).json();
+
+    if(response.data != "null"){
+      setButtonState(true)
+    }else{
+      setButtonState(false)
+    }
+    setLoading(false);
+  }
+
+  const getCourse =() =>{
+    fetch('http://192.168.128.23:5010/cursos/all')
+    .then((response) => response.json())
+    .then((data) => {
+      const cursoEncontrado = filterCurse(data, nameCurse);
+      setCursoEncontrado(cursoEncontrado);
+      //setLoading(false);
+    })
+    .catch((error) => {
+      console.log("Error => " + error);
+      //setLoading(true);
+    });
+  }
+
+  useEffect(() => { 
+    validateRegistratedUser();
+    getCourse();
+
+  }, []);
 
   return (
     <>
