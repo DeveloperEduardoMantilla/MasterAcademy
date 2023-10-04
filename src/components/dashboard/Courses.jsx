@@ -6,7 +6,9 @@ import Loading from "../global/loading.jsx";
 export default function Courses(){
   const [coursesData, setCoursesData] = useState([]);
   const [loading, setLoading] = useState(true)
+  
   useEffect(() => {
+
     fetch('http://192.168.128.23:5010/cursos/all')
       .then((response) => response.json())
       .then((data) => {
