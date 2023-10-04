@@ -6,6 +6,7 @@ import "../assets/styles/courses/render.css"
 
 export default function RenderCourse(){
     const [data, setData] = useState([]);
+
     const [selectedVideoTitle, setSelectedVideoTitle] = useState('');
     const [selectedSectionNumber, setSelectedSectionNumber] = useState(1);
     const [loading, setLoading] = useState(true)
@@ -32,6 +33,7 @@ export default function RenderCourse(){
             setUserData(userData)
 
             setLoading(false);
+
           } catch (error) {
             console.error('Error al cargar datos desde la API:', error);
             setLoading(false);
@@ -79,13 +81,26 @@ export default function RenderCourse(){
                     <div className="content-v1">
                         <div className="content-curse-m1">
                             <div className="curse-video">
-                                {selectedVideoTitle && (
+                                {
+                                selectedVideoTitle==""?(
+                                    //data[0].videos[0][1].video
+                                    <video
+                                    autoPlay
+                                    src={`http://192.168.128.23:5010/cursos/play?course=${nameCurse}&seccion=1&video=${data[0].videos[0][1].video}`}
+                              
+
+                                    controls
+                                    ></video>
+                                    
+                                ):(
+                                selectedVideoTitle && (
                                     <video
                                     autoPlay
                                     src={`http://192.168.128.23:5010/cursos/play?course=${nameCurse}&seccion=${selectedSectionNumber}&video=${selectedVideoTitle}`}
                                     controls
                                     ></video>
-                                )}
+                                ))
+                                }
                                 <div className="coments">
                                     <div className='comen-user'>
                                         <img src={userData.profile} alt="" />
