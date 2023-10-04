@@ -25,7 +25,7 @@ appDasboard.post("/courseregistration", appAuth, registrationCourse, verifyDTO, 
 appDasboard.get("/requestcourses", appAuth, version(getRequestCourses))
 appDasboard.get("/courseregistration/:userId", appAuth, version(getCourseRegistration))
 appDasboard.post("/validationRegistred",appAuth, validateRegistred,verifyDTO, version(getValidationRegistred))
-appDasboard.post("/comment",appAuth, commentRegistration, verifyDTO, version(postComment));
+appDasboard.post("/comment", commentRegistration, verifyDTO, version(postComment));
 appDasboard.get("/comment/:course", version(getCommentCourse));
 
 

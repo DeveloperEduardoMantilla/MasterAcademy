@@ -1,18 +1,22 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Loading from "../components/global/loading.jsx";
+import {useForm} from "react-hook-form";     
 
 import "../assets/styles/courses/render.css"
+import Swal from 'sweetalert2';
 
 export default function RenderCourse(){
-    const [data, setData] = useState([]);
 
+    const {register, handleSubmit,reset} = useForm();
+
+    const [data, setData] = useState([]);
     const [selectedVideoTitle, setSelectedVideoTitle] = useState('');
     const [selectedSectionNumber, setSelectedSectionNumber] = useState(1);
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState([])
     const { nameCurse } = useParams();
-    const [comment, setComment] = useState('');
+    const [comment, setComment] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -51,26 +55,64 @@ export default function RenderCourse(){
         setSelectedVideoTitle(''); 
     };
 
-    const sendRecord = async () => {
-        try {
-          const response = await fetch('', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              comment: comment,
-            }),
-          });
-    
-          if (!response.ok) {
-            throw new Error('Error al enviar el comentario');
-          }
-          setComment('');
-        } catch (error) {
-          console.error('Error al enviar el comentario:', error);
+    const newComment = async (data)=>{
+        if(!data.comment){
+            window.alert("Perro")
+        }else{
+
+
+            const date = new Date();
+            const options = {
+                month: 'numeric',
+                day: 'numeric',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: true,
+            };
+
+            const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+            
+            let data2 = {
+                "class":"docker",
+                "userId":userData.id,
+                "comment":data.comment,
+                "date":formattedDate
+              }
+              
+              let optionsPost = {
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify(data2),
+                headers: {
+                  "Content-Type": "application/json",  
+            }}
+
+            await fetch("http://localhost:5010/dashboard/comment", optionsPost);
+            
+            Swal.fire({
+                position: 'bottom-end', 
+                icon: 'success',
+                title: 'Comment sent ',
+                toast: true, 
+                showConfirmButton: false, 
+                timer: 3000, 
+                timerProgressBar: true
+              })
         }
-      };
+        
+    
+    }   
+     
+    const onSubmit = (data) => (
+        newComment(data)        
+    )
+
+ /*    useEffect(()=>{
+        newComment()
+    },[comment]) */
+      
 
     return(
         <>
@@ -105,9 +147,9 @@ export default function RenderCourse(){
                                     <div className='comen-user'>
                                         <img src={userData.profile} alt="" />
                                         <div className="comen-form">
-                                            <form action="">
-                                                <input type="text" value={comment}  onChange={(e) => setComment(e.target.value)}/>
-                                                <button onClick={sendRecord}>Enviar</button>
+                                            <form onSubmit={handleSubmit(onSubmit)}>
+                                                <input {...register("comment")} />
+                                                <input required type='submit' className='btn btn-primary' />
                                             </form>
                                         </div>
                                     </div>
