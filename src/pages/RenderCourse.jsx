@@ -9,19 +9,28 @@ export default function RenderCourse(){
     const [selectedVideoTitle, setSelectedVideoTitle] = useState('');
     const [selectedSectionNumber, setSelectedSectionNumber] = useState(1);
     const [loading, setLoading] = useState(true)
+    const [userData, setUserData] = useState([])
     const { nameCurse } = useParams();
+    const [comment, setComment] = useState('');
 
     useEffect(() => {
         async function fetchData() {
           try {
             const response = await fetch(`http://192.168.128.23:5010/cursos/?course=${nameCurse}`);
-            console.log(response);
             if (!response.ok) {
               throw new Error('No se pudo cargar la información desde la API');
             }
             const jsonData = await response.json();
             setData(Object.values(jsonData));
-            console.log(data);
+            
+
+            let options = {
+                method: "GET",
+                credentials: "include" 
+            };
+            let userData = await(await fetch("http://localhost:5010/dashboard/userLogout", options)).json();
+            setUserData(userData)
+
             setLoading(false);
           } catch (error) {
             console.error('Error al cargar datos desde la API:', error);
@@ -31,7 +40,7 @@ export default function RenderCourse(){
         fetchData();
       }, []);
 
-    const MIFUNCION = (title) => {
+    const renderVideo = (title) => {
      setSelectedVideoTitle(title); 
     };
     
@@ -39,6 +48,27 @@ export default function RenderCourse(){
         setSelectedSectionNumber(sectionNumber);
         setSelectedVideoTitle(''); 
     };
+
+    const sendRecord = async () => {
+        try {
+          const response = await fetch('', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              comment: comment,
+            }),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Error al enviar el comentario');
+          }
+          setComment('');
+        } catch (error) {
+          console.error('Error al enviar el comentario:', error);
+        }
+      };
 
     return(
         <>
@@ -56,9 +86,16 @@ export default function RenderCourse(){
                                     controls
                                     ></video>
                                 )}
-                                <div className="coments bg-white p-5 ">
-                                    <h4>Comentes</h4>
-                                    <p>Comentarios Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo commodi at incidunt consequuntur placeat ipsa aliquam totam ratione, sunt quis assumenda voluptate porro officia dolore accusantium officiis animi voluptas cupiditate!</p>
+                                <div className="coments">
+                                    <div className='comen-user'>
+                                        <img src={userData.profile} alt="" />
+                                        <div className="comen-form">
+                                            <form action="">
+                                                <input type="text" value={comment}  onChange={(e) => setComment(e.target.value)}/>
+                                                <button onClick={sendRecord}>Enviar</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -86,8 +123,8 @@ export default function RenderCourse(){
                                             {videos.map((videoObj, index) => {
                                                 const video = Object.values(videoObj)[0];
                                                 return (
-                                                <li key={index}  type="none">
-                                                    <button onClick={() => MIFUNCION(video.video)}>{video.Titulo}</button>
+                                                <li key={index}  type="none" >
+                                                    <button onClick={() => renderVideo(video.video)}>{video.Titulo}</button>
                                                 </li>
                                                 );
                                             })}
