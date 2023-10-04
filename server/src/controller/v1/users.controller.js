@@ -105,6 +105,18 @@ const getRequestCoursesController = async(req, res)=>{
     }
 }
 
+const postCommentController = async(req, res)=>{
+    try{
+        let db = await conx();
+        let user = db.collection("classComments");
+        await user.insertOne(req.body)
+        res.status(200).send({message:'Comment entered successfully'})
+    }catch(error){
+        console.log({message:error.message});
+        res.status(500).send({message:error.message})
+    }
+}
+
 export {
     getUsersController,
     getUserIdController,
@@ -112,5 +124,6 @@ export {
     postCourseRegistrationController,
     getCourseRegistrationController,
     getValidationRegistredController,
-    getRequestCoursesController
+    getRequestCoursesController,
+    postCommentController
 }
