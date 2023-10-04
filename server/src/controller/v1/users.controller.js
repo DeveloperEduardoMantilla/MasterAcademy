@@ -117,6 +117,17 @@ const postCommentController = async(req, res)=>{
     }
 }
 
+const getCommentCourseController=async(req,res)=>{
+    try {
+        let db = await conx();
+        let user = db.collection("classComments");
+        let result = await user.find({class:req.params.course}).toArray();
+        return res.status(200).send(result); 
+    } catch (error) {
+        res.status(500).send({message:error.stack});
+    }
+}
+
 export {
     getUsersController,
     getUserIdController,
@@ -125,5 +136,6 @@ export {
     getCourseRegistrationController,
     getValidationRegistredController,
     getRequestCoursesController,
-    postCommentController
+    postCommentController,
+    getCommentCourseController
 }
