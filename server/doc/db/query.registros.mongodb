@@ -3,3 +3,27 @@
 //state - user => ( 0 disabled - 1 activated )
 //state - user - Rol => ( 0 student - 1 administrator )
 //state - courseRegistration => ( 0 denied - 1 allowed )
+
+
+use("MasterAcademy")
+db.classComments.aggregate([
+    {
+        $lookup: {
+          from: "user",
+          localField: "userId",
+          foreignField: "id",
+          as: "user"
+        }
+    },
+    {
+        $project:{
+            "_id":0,
+            "user._id":0
+        }
+    },
+    {
+       $sort:{
+        date:-1
+       } 
+    }
+]);

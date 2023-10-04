@@ -18,7 +18,14 @@ export default function RenderCourse(){
     const { nameCurse } = useParams();
     const [comment, setComment] = useState(false);
 
+
+    const getComments=async()=>{
+        const response = await ( await fetch(`http://localhost:5010/dashboard/comment/${nameCurse}`)).json();
+        setComment(response);
+    }
+
     useEffect(() => {
+        getComments()
         async function fetchData() {
           try {
             const response = await fetch(`http://192.168.128.23:5010/cursos/?course=${nameCurse}`);
@@ -46,6 +53,7 @@ export default function RenderCourse(){
         fetchData();
       }, []);
 
+
     const renderVideo = (title) => {
      setSelectedVideoTitle(title); 
     };
@@ -59,8 +67,6 @@ export default function RenderCourse(){
         if(!data.comment){
             window.alert("Perro")
         }else{
-
-
             const date = new Date();
             const options = {
                 month: 'numeric',
@@ -75,7 +81,7 @@ export default function RenderCourse(){
             const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
             
             let data2 = {
-                "class":"docker",
+                "class":nameCurse,
                 "userId":userData.id,
                 "comment":data.comment,
                 "date":formattedDate
@@ -90,7 +96,7 @@ export default function RenderCourse(){
             }}
 
             await fetch("http://localhost:5010/dashboard/comment", optionsPost);
-            
+            reset();
             Swal.fire({
                 position: 'bottom-end', 
                 icon: 'success',
@@ -109,10 +115,6 @@ export default function RenderCourse(){
         newComment(data)        
     )
 
- /*    useEffect(()=>{
-        newComment()
-    },[comment]) */
-      
 
     return(
         <>
@@ -125,7 +127,6 @@ export default function RenderCourse(){
                             <div className="curse-video">
                                 {
                                 selectedVideoTitle==""?(
-                                    //data[0].videos[0][1].video
                                     <video
                                     autoPlay
                                     src={`http://192.168.128.23:5010/cursos/play?course=${nameCurse}&seccion=1&video=${data[0].videos[0][1].video}`}
@@ -144,20 +145,40 @@ export default function RenderCourse(){
                                 ))
                                 }
                                 <div className="coments">
-                                    <div className='comen-user'>
+                                <div className='comen-user'>
                                         <img src={userData.profile} alt="" />
                                         <div className="comen-form">
                                             <form onSubmit={handleSubmit(onSubmit)}>
                                                 <input {...register("comment")} />
-                                                <input required type='submit' className='btn btn-primary' />
+                                                <button required type='submit' className='btn btn-primary'>Enviar</button>
                                             </form>
+                                            </div>
+                                </div>
+                                <div className='list-comments'>
+                                    
+                                    {
+                                        
+                                        comment.map((rc, key) => (
+                                            
+                                        <div className='comments-users' key={key}>
+                                            <div className="user-coment-img">
+                                                <img src={rc.user[0].profile} alt="" />
+                                            </div>
+                                            <div className="details-comments">
+                                                <h2>{rc.user[0].username}</h2>
+                                                <p>{rc.comment}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                            ))
+                                    }
+                                </div>
+                                
+                                    
                                 </div>
                             </div>
                         </div>
                         <div className="content-curse-m2">
-                            <div className="accordion accordion-flush bg-dark" id="accordionFlushExample">
+                            <div className="accordion accordion-flush " id="accordionFlushExample">
                                 {data.map((section, i)=>{
                                     const sectionNumber = i + 1; 
                                     const videos = section.videos;

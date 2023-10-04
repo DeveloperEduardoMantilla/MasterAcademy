@@ -121,7 +121,28 @@ const getCommentCourseController=async(req,res)=>{
     try {
         let db = await conx();
         let user = db.collection("classComments");
-        let result = await user.find({class:req.params.course}).toArray();
+        let result = await user.aggregate([
+            {
+                $lookup: {
+                  from: "user",
+                  localField: "userId",
+                  foreignField: "id",
+                  as: "user"
+                }
+            },
+            {
+                $project:{
+                    "_id":0,
+                    "user._id":0
+                }
+            },
+            {
+               $sort:{
+                date:-1
+               } 
+            }
+        ]).toArray();
+
         return res.status(200).send(result); 
     } catch (error) {
         res.status(500).send({message:error.stack});
