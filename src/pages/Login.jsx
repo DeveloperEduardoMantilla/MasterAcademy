@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 async function  logueoDiscord(){
+  const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+  const portBackEnd =import.meta.env.VITE_PORT_BACKEND;
   try{
     document.cookie = "MasterAcademy-Session=; max-age=0;";
-    let result =await fetch("http://localhost:5010");
+    let result =await fetch(`http://${ipBackEnd}:${portBackEnd}`);
     if(result.ok){
-      window.location.href= "http://localhost:5010/login"
+      window.location.href= `http://${ipBackEnd}:${portBackEnd}/login`
     }
   }catch(e){
     Swal.fire({

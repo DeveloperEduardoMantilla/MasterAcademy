@@ -5,6 +5,9 @@ import passport from "passport";
 import session  from "express-session";
 import MongoStorage from 'connect-mongo';
 import cors from "cors";
+import {loadEnv } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+let env = loadEnv("development", process.cwd(), "VITE")
 
 //Routes
 import login from "./router/login.routes.js"
@@ -15,17 +18,17 @@ import logout from "../src/router/logout.js";
 dotenv.config();
 let appExpress = express();
 appExpress.use(cors({
-    origin: "http://localhost:5173",
+    origin: `http://${env.VITE_IP_FRONTEND}:${env.VITE_PORT_FRONTEND}`,
     credentials: true
   }))
 appExpress.use(express.json());
 appExpress.use(session({
-    secret:process.env.JWT_PRIVATE_KEY,
+    secret:env.VITE_JWT_PRIVATE_KEY,
     name:"MasterAcademy-Session",
     saveUninitialized:false,
     resave:false,
     store: MongoStorage.create({
-        mongoUrl: `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@${process.env.ATLAS_CLUSTER}.mongodb.net/${process.env.ATLAS_DB}`
+        mongoUrl: `mongodb+srv://${env.VITE_ATLAS_USER}:${env.VITE_ATLAS_PASSWORD}@${env.VITE_ATLAS_CLUSTER}.mongodb.net/${env.VITE_ATLAS_DB}`
     }),
     cookie:{
         maxAge:60000*60*24,
@@ -44,8 +47,8 @@ appExpress.use((req, res, next) => {
     console.log('Requested URL:', req.url);
     next();
   });
+  
 //Rutas
-
 appExpress.use("/login", login);
 appExpress.use("/dashboard",appDasboard);
 appExpress.use(logout);
@@ -55,7 +58,7 @@ appExpress.use("/", (req,res)=>{
 
 
 //Servidor Express 
-let config = JSON.parse(process.env.MY_SERVER)
+let config = JSON.parse(env.VITE_MY_SERVER)
 appExpress.listen(config, ()=>{
     console.log(`http://${config.hostname}:${config.port}`)
 })

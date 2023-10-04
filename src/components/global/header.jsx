@@ -7,8 +7,10 @@ import { faBars} from "@fortawesome/free-solid-svg-icons";
 
 async function exit(){
     try{
+        const ipFrontEnd = import.meta.env.VITE_IP_FRONTEND;
+        const portFrontEnd = import.meta.env.VITE_PORT_FRONTEND;
         document.cookie = "MasterAcademy-Session=; max-age=0;";
-        window.location.href= "http://localhost:5173/"
+        window.location.href= `http://${ipFrontEnd}:${portFrontEnd}/`
     }catch(e){
         console.log(e.message);
     }
@@ -21,9 +23,12 @@ function btnSidebar(){
 }
 
 export default function Header(){
+  const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+  const portBackEnd = import.meta.env.VITE_PORT_BACKEND; 
+
   const [UserData, setUserData] = useState([]);
   useEffect(() => {
-    let ruta="http://localhost:5010/dashboard/userLogout";
+    let ruta=`http://${ipBackEnd}:${portBackEnd}/dashboard/userLogout`;
     fetch(ruta, {
       method: "GET",
       credentials: "include",
@@ -32,8 +37,8 @@ export default function Header(){
       .then((data) => {
         setUserData(data);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((e) => {
+        console.log("Error data =>",e);
       });
   }, []);
   

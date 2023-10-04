@@ -7,6 +7,10 @@ import "../../assets/styles/courses/myCourses.css"
 
 
 export default function MyCourses(){
+    const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+    const portBackEnd = import.meta.env.VITE_PORT_BACKEND;
+    const ipCourses = import.meta.env.VITE_IP_COURSES;
+    const portCourses = import.meta.env.VITE_PORT_COURSES;
 
     const [loading, setLoading] = useState(true)
     const [dataMyCourses, setDataMyCourses] = useState([])
@@ -24,8 +28,8 @@ export default function MyCourses(){
                 method: "GET",
                 credentials: "include" 
             };
-            let response = await(await fetch("http://localhost:5010/dashboard/userLogout", options)).json();
-            let ruta = `http://localhost:5010/dashboard/courseregistration/${response.id}`;
+            let response = await(await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/userLogout`, options)).json();
+            let ruta = `http://${ipBackEnd}:${portBackEnd}/dashboard/courseregistration/${response.id}`;
             let coursesRegistrated = await(await fetch(ruta, options)).json();
             setDataMyCourses(coursesRegistrated.message);
             setLoading(false);
@@ -38,7 +42,7 @@ export default function MyCourses(){
     },[dataMyCourses])
 
     useEffect(() => {
-        fetch('http://192.168.128.23:5010/cursos/all')
+        fetch(`http://${ipCourses}:${portCourses}/cursos/all`)
           .then((response) => response.json())
           .then((data) => {
             setCoursesData(data);

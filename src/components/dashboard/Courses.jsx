@@ -6,10 +6,12 @@ import Loading from "../global/loading.jsx";
 export default function Courses(){
   const [coursesData, setCoursesData] = useState([]);
   const [loading, setLoading] = useState(true)
+  const ipCourses =import.meta.env.VITE_IP_COURSES;
+  const portCourses =import.meta.env.VITE_PORT_COURSES;
   
   useEffect(() => {
 
-    fetch('http://192.168.128.23:5010/cursos/all')
+    fetch(`http://${ipCourses}:${portCourses}/cursos/all`)
       .then((response) => response.json())
       .then((data) => {
         setCoursesData(data);

@@ -2,8 +2,12 @@ import passport from "passport";
 import { Strategy } from "passport-discord";
 import { conx } from "./atlas.js";
 import dotenv from "dotenv";
+import { loadEnv } from 'vite'
+import react from '@vitejs/plugin-react-swc'
 
 dotenv.config()
+let env = loadEnv("development", process.cwd(), "VITE")
+
 passport.serializeUser((user, done)=>{
     done(null, user)
 })
@@ -17,13 +21,13 @@ function searchidInArray(arr, idSearch) {
 }
 
 passport.use(new Strategy({ 
-    clientID: process.env.DISCORD_CLIENT_ID,
-    clientSecret: process.env.DISCORD_CLIENT_SECRET,
+    clientID: env.VITE_DISCORD_CLIENT_ID,
+    clientSecret: env.VITE_DISCORD_CLIENT_SECRET,
     callbackURL : "http://localhost:5010/login/redirect",
     scope: ['identify','guilds']
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
-            let guildId=process.env.ID_SERVER_DISCORD;
+            let guildId=env.VITE_ID_SERVER_DISCORD;
             if(!searchidInArray(profile.guilds, guildId)){    
                 done(null,false)
                 return;

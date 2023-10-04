@@ -6,6 +6,10 @@ import Loading from "../components/global/loading.jsx";
 import Swal from 'sweetalert2'
 
 function ViewCourse() {
+  const ipBackEnd = JSON.parse(import.meta.env.VITE_IP_BACKEND);
+  const portBackEnd = JSON.parse(import.meta.env.VITE_PORT_BACKEND);
+  const ipCourses = JSON.parse(import.meta.env.VITE_IP_COURSES);
+  const portCourses = JSON.parse(import.meta.env.VITE_PORT_COURSES);
 
   const [loading, setLoading] = useState(true);
   const [buttonState, setButtonState]= useState(false);
@@ -18,13 +22,15 @@ function ViewCourse() {
   }
 
   async function registerCourse(){
+    
     try {
+      
 
       let options = {
         method: "GET",
         credentials: "include"
       };
-      let response = await(await fetch("http://localhost:5010/dashboard/userLogout", options)).json();
+      let response = await(await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/userLogout`, options)).json();
       let date = new Date;
       let fecha = date.toLocaleString(undefined,{hour12: true});
       
@@ -43,7 +49,7 @@ function ViewCourse() {
           "Content-Type": "application/json",  
       }}
 
-      await fetch("http://localhost:5010/dashboard/courseregistration", optionsPost);
+      await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/courseregistration`, optionsPost);
 
       setButtonState(true)
       Swal.fire({
@@ -67,7 +73,7 @@ function ViewCourse() {
       method: "GET",
       credentials: "include"
     };
-    let dataUser = await(await fetch("http://localhost:5010/dashboard/userLogout", optionsValidate)).json();
+    let dataUser = await(await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/userLogout`, optionsValidate)).json();
 
     let data={
         "userId":dataUser.id,
@@ -82,7 +88,7 @@ function ViewCourse() {
     }}
 
 
-    let response = await(await fetch("http://localhost:5010/dashboard/validationRegistred", options)).json();
+    let response = await(await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/validationRegistred`, options)).json();
 
     if(response.data != "null"){
       setButtonState(true)
@@ -93,7 +99,7 @@ function ViewCourse() {
   }
 
   const getCourse =() =>{
-    fetch('http://192.168.128.23:5010/cursos/all')
+    fetch(`http://${ipCourses}:${portCourses}/cursos/all`)
     .then((response) => response.json())
     .then((data) => {
       const cursoEncontrado = filterCurse(data, nameCurse);

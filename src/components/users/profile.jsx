@@ -3,8 +3,10 @@ import {useState, useEffect, React} from "react"
 
 const Profile =()=>{
     const [UserData, setUserData] = useState([]);
+    const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+    const portBackEnd = import.meta.env.VITE_PORT_BACKEND;
     useEffect(() => {
-      let ruta="http://localhost:5010/dashboard/userLogout";
+      let ruta=`http://${ipBackEnd}:${portBackEnd}/dashboard/userLogout`;
       fetch(ruta, {
         method: "GET",
         credentials: "include",
@@ -14,7 +16,7 @@ const Profile =()=>{
           setUserData(data);
         })
         .catch((error) => {
-          console.log("Error 23 => " + error);
+          console.log("Error => " + error);
         });
     }, []);
 

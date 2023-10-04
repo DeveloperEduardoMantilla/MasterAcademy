@@ -7,8 +7,11 @@ import Loading from "../global/loading.jsx";
 function Userregistrated() {
   const [requestCourses, setRequestCourses] = useState([]);
   const [loading, setLoading] = useState(true)
+  const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+  const portBackEnd = import.meta.env.VITE_PORT_BACKEND
+
   useEffect(() => {
-    let ruta="http://localhost:5010/dashboard/requestcourses";
+    let ruta=`http://${ipBackEnd}:${portBackEnd}/dashboard/requestcourses`;
     fetch(ruta, {
       method: "GET",
       credentials: "include",

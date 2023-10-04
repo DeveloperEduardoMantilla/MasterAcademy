@@ -7,7 +7,10 @@ import "../assets/styles/courses/render.css"
 import Swal from 'sweetalert2';
 
 export default function RenderCourse(){
-
+    const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+    const portBackEnd = import.meta.env.VITE_PORT_BACKEND;
+    const ipCourses = import.meta.env.VITE_IP_COURSES;
+    const portCourses = import.meta.env.VITE_PORT_COURSES;
     const {register, handleSubmit,reset} = useForm();
 
     const [data, setData] = useState([]);
@@ -20,7 +23,7 @@ export default function RenderCourse(){
 
 
     const getComments=async()=>{
-        const response = await ( await fetch(`http://localhost:5010/dashboard/comment/${nameCurse}`)).json();
+        const response = await ( await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/comment/${nameCurse}`)).json();
         setComment(response);
     }
 
@@ -28,7 +31,7 @@ export default function RenderCourse(){
         getComments()
         async function fetchData() {
           try {
-            const response = await fetch(`http://192.168.128.23:5010/cursos/?course=${nameCurse}`);
+            const response = await fetch(`http://${ipCourses}:${portCourses}/cursos/?course=${nameCurse}`);
             if (!response.ok) {
               throw new Error('No se pudo cargar la información desde la API');
             }
@@ -40,7 +43,7 @@ export default function RenderCourse(){
                 method: "GET",
                 credentials: "include" 
             };
-            let userData = await(await fetch("http://localhost:5010/dashboard/userLogout", options)).json();
+            let userData = await(await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/userLogout`, options)).json();
             setUserData(userData)
 
             setLoading(false);
@@ -95,7 +98,7 @@ export default function RenderCourse(){
                   "Content-Type": "application/json",  
             }}
 
-            await fetch("http://localhost:5010/dashboard/comment", optionsPost);
+            await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/comment`, optionsPost);
             reset();
             Swal.fire({
                 position: 'bottom-end', 
@@ -129,7 +132,7 @@ export default function RenderCourse(){
                                 selectedVideoTitle==""?(
                                     <video
                                     autoPlay
-                                    src={`http://192.168.128.23:5010/cursos/play?course=${nameCurse}&seccion=1&video=${data[0].videos[0][1].video}`}
+                                    src={`http://${ipCourses}:${portCourses}/cursos/play?course=${nameCurse}&seccion=1&video=${data[0].videos[0][1].video}`}
                               
 
                                     controls
@@ -139,7 +142,7 @@ export default function RenderCourse(){
                                 selectedVideoTitle && (
                                     <video
                                     autoPlay
-                                    src={`http://192.168.128.23:5010/cursos/play?course=${nameCurse}&seccion=${selectedSectionNumber}&video=${selectedVideoTitle}`}
+                                    src={`http://${ipCourses}:${portCourses}/cursos/play?course=${nameCurse}&seccion=${selectedSectionNumber}&video=${selectedVideoTitle}`}
                                     controls
                                     ></video>
                                 ))

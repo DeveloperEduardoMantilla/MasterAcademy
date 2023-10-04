@@ -5,10 +5,12 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../global/loading.jsx";
 
 function Userregistrated() {
+  const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+  const portBackEnd = import.meta.env.VITE_PORT_BACKEND;
   const [usersData, setUsersData] = useState([]);
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    let ruta="http://localhost:5010/dashboard/users";
+    let ruta=`http://${ipBackEnd}:${portBackEnd}/dashboard/users`;
     fetch(ruta, {
       method: "GET",
       credentials: "include",
