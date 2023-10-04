@@ -8,6 +8,8 @@ import react from '@vitejs/plugin-react-swc'
 dotenv.config()
 let env = loadEnv("development", process.cwd(), "VITE")
 
+const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+const portBackEnd = import.meta.env.VITE_PORT_BACKEND;
 passport.serializeUser((user, done)=>{
     done(null, user)
 })
@@ -23,7 +25,7 @@ function searchidInArray(arr, idSearch) {
 passport.use(new Strategy({ 
     clientID: env.VITE_DISCORD_CLIENT_ID,
     clientSecret: env.VITE_DISCORD_CLIENT_SECRET,
-    callbackURL : "http://localhost:5010/login/redirect",
+    callbackURL : `http://${ipBackEnd}:${portBackEnd}/login/redirect`,
     scope: ['identify','guilds']
 }, async(accessToken,refreshToken,profile,done)=>{
     try{
