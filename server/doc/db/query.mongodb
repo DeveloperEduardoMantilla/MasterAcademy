@@ -89,11 +89,11 @@ db.createCollection('classComments', {
             required: ["class", "userId", "comment", "date"],
             properties: {
                 class: {
-                    bsonType: "number",
+                    bsonType: "string",
                     description: "The class must be of integer type"
                 },
                 userId: {
-                    bsonType: "number",
+                    bsonType: "string",
                     description: "The userId must be of integer type"
                 },
                 comment: {
