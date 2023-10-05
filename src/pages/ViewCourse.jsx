@@ -6,10 +6,10 @@ import Loading from "../components/global/loading.jsx";
 import Swal from 'sweetalert2'
 
 function ViewCourse() {
-  const ipBackEnd = JSON.parse(import.meta.env.VITE_IP_BACKEND);
-  const portBackEnd = JSON.parse(import.meta.env.VITE_PORT_BACKEND);
-  const ipCourses = JSON.parse(import.meta.env.VITE_IP_COURSES);
-  const portCourses = JSON.parse(import.meta.env.VITE_PORT_COURSES);
+  const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
+  const portBackEnd = import.meta.env.VITE_PORT_BACKEND;
+  const ipCourses = import.meta.env.VITE_IP_COURSES;
+  const portCourses = import.meta.env.VITE_PORT_COURSES;
 
   const [loading, setLoading] = useState(true);
   const [buttonState, setButtonState]= useState(false);

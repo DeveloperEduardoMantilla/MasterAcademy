@@ -8,8 +8,8 @@ import react from '@vitejs/plugin-react-swc'
 dotenv.config()
 let env = loadEnv("development", process.cwd(), "VITE")
 
-const ipBackEnd = import.meta.env.VITE_IP_BACKEND;
-const portBackEnd = import.meta.env.VITE_PORT_BACKEND;
+const ipBackEnd = env.VITE_IP_BACKEND;
+const portBackEnd = env.VITE_PORT_BACKEND;
 passport.serializeUser((user, done)=>{
     done(null, user)
 })

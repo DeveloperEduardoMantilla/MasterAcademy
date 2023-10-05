@@ -56,9 +56,10 @@ appExpress.use("/", (req,res)=>{
     res.send({Message:"Bienvenidos, MasterAcademy cuenta con su propia api para la gestion de contenido, recuerda que es importante estar logueado para poder hacer uso de los diferentes servicios que presta dicha api."})
 })
 
+const ipBackEnd = env.VITE_IP_BACKEND;
+const portBackEnd = env.VITE_PORT_BACKEND;
 
 //Servidor Express 
-let config = JSON.parse(env.VITE_MY_SERVER)
-appExpress.listen(config, ()=>{
-    console.log(`http://${config.hostname}:${config.port}`)
+appExpress.listen((ipBackEnd,portBackEnd), ()=>{
+    console.log(`http://${ipBackEnd}:${portBackEnd}`)
 })
