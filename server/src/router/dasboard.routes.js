@@ -1,7 +1,7 @@
 import express from "express";
 import passport  from "passport";
 import routesVersioning from "express-routes-versioning";
-import {getUsers, getUserId, getUserLogout, postCourseRegistration,getCourseRegistration,getCommentCourse,  getValidationRegistred, getRequestCourses, postComment} from "../support/v1.users.js"
+import {getUsers, getUserId, getUserLogout, postCourseRegistration,getCourseRegistration,getCommentCourse,  getValidationRegistred, getRequestCourses, postComment, putAllowCourse} from "../support/v1.users.js"
 import {appAuth, appOut} from "../utils/auth.js";
 import appValidateId from "../middlewares/validateId.js";
 import {registrationCourse} from "../storage/dto.courses.js";
@@ -27,6 +27,6 @@ appDasboard.get("/courseregistration/:userId", appAuth, version(getCourseRegistr
 appDasboard.post("/validationRegistred",appAuth, validateRegistred,verifyDTO, version(getValidationRegistred))
 appDasboard.post("/comment", commentRegistration, verifyDTO, version(postComment));
 appDasboard.get("/comment/:course", version(getCommentCourse));
-
+appDasboard.put("/allowCourse", validateRegistred,verifyDTO ,version(putAllowCourse))
 
 export default appDasboard;

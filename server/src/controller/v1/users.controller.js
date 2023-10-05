@@ -149,6 +149,17 @@ const getCommentCourseController=async(req,res)=>{
     }
 }
 
+const putAllowCourseController = async(req,res)=>{
+    try{
+        let db = await conx();
+        let user = db.collection("courseRegistration");
+        let resul = await user.updateOne({course:req.body.course,userId:req.body.userId},{$set:{state:req.body.state}})
+        res.status(200).send({message:resul.modifiedCount})
+    }catch(error){
+        console.log({message:error.message});
+        res.status(500).send({message:error.message})
+    }
+}
 export {
     getUsersController,
     getUserIdController,
@@ -158,5 +169,6 @@ export {
     getValidationRegistredController,
     getRequestCoursesController,
     postCommentController,
-    getCommentCourseController
+    getCommentCourseController,
+    putAllowCourseController
 }

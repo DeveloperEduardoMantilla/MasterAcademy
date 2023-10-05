@@ -1,4 +1,4 @@
-import {getUsersController,getUserIdController, getCommentCourseController,  getUserLogoutController, postCourseRegistrationController, getCourseRegistrationController, getValidationRegistredController, getRequestCoursesController, postCommentController} from "../controller/v1/users.controller.js";
+import {getUsersController,getUserIdController, getCommentCourseController,  getUserLogoutController, postCourseRegistrationController, putAllowCourseController, getCourseRegistrationController, getValidationRegistredController, getRequestCoursesController, postCommentController} from "../controller/v1/users.controller.js";
 
 let getUsers ={
     "1.0.0": getUsersController
@@ -36,6 +36,10 @@ let getCommentCourse = {
     "1.0.0": getCommentCourseController
 }
 
+let putAllowCourse = {
+    "1.0.0": putAllowCourseController
+}
+
 export {
     getUsers,
     getUserId,
@@ -45,5 +49,6 @@ export {
     getValidationRegistred,
     getRequestCourses,
     postComment,
-    getCommentCourse
+    getCommentCourse,
+    putAllowCourse
 }
