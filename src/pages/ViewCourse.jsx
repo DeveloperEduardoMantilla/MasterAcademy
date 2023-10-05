@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import "../assets/styles/dasboard/dasboard.css";
 import "../assets/styles/courses/viewCourse.css";
 import Loading from "../components/global/loading.jsx";
@@ -13,10 +13,9 @@ function ViewCourse() {
 
   const [loading, setLoading] = useState(true);
   const [buttonState, setButtonState]= useState(false);
-  const [stateRegistrated, setstateRegistrated]= useState("");
+  const [stateRegistrated, setstateRegistrated]= useState(false);
   const [cursoEncontrado, setCursoEncontrado] = useState(null);
   const { nameCurse } = useParams();
-
   function filterCurse(courses, nombreCurso) {
     return courses.find(objeto => objeto.folder === nombreCurso);
   }
@@ -91,6 +90,9 @@ function ViewCourse() {
     let response = await(await fetch(`http://${ipBackEnd}:${portBackEnd}/dashboard/validationRegistred`, options)).json();
 
     if(response.data != "null"){
+      if(response.data[0].state==true){
+        setstateRegistrated(true)
+      }
       setButtonState(true)
     }else{
       setButtonState(false)
@@ -104,11 +106,9 @@ function ViewCourse() {
     .then((data) => {
       const cursoEncontrado = filterCurse(data, nameCurse);
       setCursoEncontrado(cursoEncontrado);
-      //setLoading(false);
     })
     .catch((error) => {
       console.log("Error => " + error);
-      //setLoading(true);
     });
   }
 
@@ -128,7 +128,7 @@ function ViewCourse() {
             <div className="details-course">
               <h1>{cursoEncontrado.folder}</h1>
               <h2>{cursoEncontrado.nameCourse}</h2>
-              {buttonState?<button style={{"backgroundColor":"green"}}>En espera</button>:<button onClick={registerCourse}>Inscríbete ahora</button>}
+              {stateRegistrated?<Link className="btn btn-primary" to={`/dashboard/ViewCourse/${cursoEncontrado.folder}/view`} >Ver Curso</Link>:buttonState?<button style={{"backgroundColor":"green"}}>En espera</button>:<button onClick={registerCourse}>Inscríbete ahora</button>}
             </div>
             <div className="img-course">
               <img width={"100%"} src={cursoEncontrado.imagenCourse} alt={cursoEncontrado.nameCourse} />

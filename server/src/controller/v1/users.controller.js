@@ -137,6 +137,11 @@ const getCommentCourseController=async(req,res)=>{
                 }
             },
             {
+                $match:{
+                    "class":req.params.course
+                }
+            },
+            {
                $sort:{
                 date:-1
                } 

@@ -21,6 +21,7 @@ appExpress.use(cors({
     origin: `http://${env.VITE_IP_FRONTEND}:${env.VITE_PORT_FRONTEND}`,
     credentials: true
   }))
+
 appExpress.use(express.json());
 appExpress.use(session({
     secret:env.VITE_JWT_PRIVATE_KEY,

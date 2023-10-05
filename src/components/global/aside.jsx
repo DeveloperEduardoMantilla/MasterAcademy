@@ -19,20 +19,12 @@ export default function Aside(){
                     <Link className="to"  to={"/dashboard/courses"}> Courses</Link>
                 </div>
                 <div className="item">
-                    <FontAwesomeIcon className="rotate-vert-center" icon={faBookmark} style={{color: "#8E44AD",}}/>
-                    <Link className="to"  to={"/dashboard/mycourses"}> My Course</Link>
-                </div>
-                <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faUser} style={{color: "#117A65",}}/>
                     <Link className="to" to={"/dashboard/profile"}> Profile</Link>
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faUsers} style={{color: "#2980B9",}}/>
                     <Link className="to" to={"/dashboard/users"}> Users</Link>
-                </div>
-                <div className="item">
-                    <FontAwesomeIcon className="rotate-vert-center" icon={faUsers} style={{color: "green",}}/>
-                    <Link className="to" to={"/dashboard/ViewCourse/git/view"}>View Course</Link>
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faBook} style={{color: "green",}}/>
