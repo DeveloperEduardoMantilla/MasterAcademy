@@ -1,4 +1,3 @@
-import Home from "../../pages/Home.jsx";
 import { Link } from "react-router-dom";
 import {useState, useEffect, React} from "react"
 import "../../assets/styles/global/header.css"
@@ -18,7 +17,6 @@ async function exit(){
 
 function btnSidebar(){
     const aside = document.getElementById('aside');
-
     aside.classList.toggle('show');
 }
 

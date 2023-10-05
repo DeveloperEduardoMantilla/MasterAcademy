@@ -4,6 +4,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faBook, faArrowRightFromBracket,faBookmark,faUser, faUsers} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+function btnHiddenSidebar(){
+    const aside = document.getElementById('aside');
+    aside.classList.toggle('show');
+}
+
+async function exit(){
+    try{
+        const ipFrontEnd = import.meta.env.VITE_IP_FRONTEND;
+        const portFrontEnd = import.meta.env.VITE_PORT_FRONTEND;
+        document.cookie = "MasterAcademy-Session=; max-age=0;";
+        window.location.href= `http://${ipFrontEnd}:${portFrontEnd}/`
+    }catch(e){
+        console.log(e.message);
+    }
+}
+
 export default function Aside(){
     return(
         <>
@@ -32,10 +48,12 @@ export default function Aside(){
                 </div>
                 <div className="item">
                     <FontAwesomeIcon className="rotate-vert-center" icon={faArrowRightFromBracket} style={{color: "#E74C3C",}}/>
-                    <Link className="to" to={"/"}> Exit</Link>
+                    <div className="to" onClick={exit}> Exit</div>
                 </div>
             </div>
-            
+            <div className="btnHeader">
+                <button onClick={btnHiddenSidebar}><FontAwesomeIcon icon={faArrowRightFromBracket} style={{color: "#f2f2f2",}}/></button>
+            </div>
         </div>
         </>
     )

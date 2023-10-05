@@ -8,6 +8,12 @@
 .content-curse-m1{
     width: 60%;
 }
+@media (max-width:800px){
+    .content-curse-m1{
+        width: 100%;
+    }
+}
+
 .content-curse-m2{
     width: 40%;
     max-height: 80vh;

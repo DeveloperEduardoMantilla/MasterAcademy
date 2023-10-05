@@ -5,7 +5,7 @@ import { Routes, Route, BrowserRouter} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import Login from './pages/Login.jsx';
-import Home from "./pages/Home.jsx";
+
 import Dasboard from './pages/Dashboard.jsx';
 import Courses from './pages/Courses.jsx';
 import Profile from "./pages/Profile.jsx";
@@ -35,7 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </Route>
 
           <Route path="login" element={<Login/>} />   
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Login/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>)
